@@ -1,0 +1,8 @@
+curl -X POST https://api.planningcenteronline.com/oauth/token \
+              -F grant_type=authorization_code \
+              -F code=fCPhH3laq8XCDIJER5ELgWL6z9Z9Dr-3JluYd_c2Lpz7L \
+              -F client_id=4acb45de62172b21e64ef79ffd6a3e0f75f5ce6a54409a8308490a4ac73798de \
+              -F client_secret=ed0fb18a9ef1a0d5eedd14e001ee200d649ffab44b02828e576202e31cf5f73a \
+              -F redirect_uri=http://localhost:3000 
+              
+localhost:3000/?code=fCPhH3laq8XCDIJER5ELgWL6z9Z9Dr-3JluYd_c2Lpz7L&state=cnQzSDJNczZHUWIne|9kQkR×Y2Q0V2RPNGhhWmxXOWswZWE4azJsSWtUeg%3D%3D
