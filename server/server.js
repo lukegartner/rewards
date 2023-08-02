@@ -8,11 +8,6 @@ const authRouter = require("./routes/auth.router.js");
 app.use(express.json());
 app.use(express.static("build"));
 
-app.get("/hi", (req, res) => {
-  console.log("hello", req);
-  res.sendStatus(202);
-});
-
 /** ---------- ROUTES ---------- **/
 app.use("/auth", authRouter);
 
