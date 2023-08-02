@@ -11,6 +11,12 @@ const UserHome = () => {
     if (!me.attributes) {
       dispatch({ type: "FETCH_ME", payload: user.sub });
     }
+
+    // Only do this if new user
+    // dispatch({
+    //   type: "POST_REWARDS_USER",
+    //   payload: { pco_id: user.sub, username: user.nickname },
+    // });
   }, []);
   return (
     <main>
