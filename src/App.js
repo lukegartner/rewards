@@ -1,6 +1,7 @@
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 import Main from "./Components/Main";
+import UserHome from "./Components/UserHome";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import LoginPage from "./Components/LoginPage";
@@ -19,7 +20,7 @@ function App() {
         <Header />
         <Route path="/" exact>
           {(!user || !isAuthenticated) && <LoginPage />}
-          {user && isAuthenticated && <Main />}
+          {user && isAuthenticated && <UserHome />}
         </Route>
         <Footer />
       </Router>

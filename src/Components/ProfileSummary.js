@@ -1,20 +1,12 @@
 import { pcoImg } from "../utils/images";
 import { useAuth0 } from "@auth0/auth0-react";
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
 
 const ProfileSummary = () => {
-  const dispatch = useDispatch();
   const { user, isAuthenticated } = useAuth0();
   const isUser = isAuthenticated && user;
-  const pcoUser = useSelector((store) => store.user);
-  console.log(user);
-  if (isUser) {
-    fetch(`/auth/token/${user.sub}`)
-      .then((response) => fetch("/auth/me"))
-      .then((response) => response.json())
-      .then((me) => dispatch({ type: "SET_USER", payload: me }));
-  }
+  const me = useSelector((store) => store.me);
 
   useEffect(() => {}, []);
   return (
@@ -23,8 +15,8 @@ const ProfileSummary = () => {
         <h2>{isUser ? user.nickname : "user"}</h2>
         <img
           className="avatar"
-          src={pcoUser.data ? pcoUser.data.attributes.avatar : pcoImg}
-          alt="profile picture"
+          src={me.attributes ? me.attributes.avatar : pcoImg}
+          alt="avatar"
         />
         <p>327pts</p>
       </div>
