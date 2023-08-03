@@ -12,6 +12,7 @@ function* fetchMe(action) {
     const me = yield meResponse.json();
 
     yield put({ type: "SET_ME", payload: me.data });
+    yield put({ type: "FETCH_REWARDS_USER", payload: action.payload });
   } catch (error) {
     console.log("User get request failed", error);
   }
@@ -22,8 +23,3 @@ function* userSaga() {
 }
 
 export default userSaga;
-
-// fetch(`/auth/token/${user.sub}`)
-//   .then((response) => fetch("/auth/me"))
-//   .then((response) => response.json())
-//   .then((me) => dispatch({ type: "SET_USER", payload: me }));

@@ -5,8 +5,9 @@ import { useDispatch, useSelector } from "react-redux";
 
 const UserHome = () => {
   const dispatch = useDispatch();
-  const { me } = useSelector((store) => store);
+  const { me, rewardsUser } = useSelector((store) => store);
   const { user, isAuthenticated } = useAuth0();
+  console.log("rewardsUser", rewardsUser);
   useEffect(() => {
     if (!me.attributes) {
       dispatch({ type: "FETCH_ME", payload: user.sub });
@@ -21,6 +22,7 @@ const UserHome = () => {
   return (
     <main>
       <ProfileSummary />
+      {rewardsUser.admin && <h2>Admin</h2>}
     </main>
   );
 };
