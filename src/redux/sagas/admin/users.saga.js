@@ -3,7 +3,7 @@ import { put, takeLatest } from "redux-saga/effects";
 function* fetchUsersAdmin(action) {
   console.log("payload", action.payload);
   try {
-    const response = yield fetch("admin/users");
+    const response = yield fetch("/admin/users");
     if (!response.ok) {
       throw new Error("Error Fetching Admin Users");
     }
