@@ -27,7 +27,7 @@ CREATE TABLE "rewards" (
     "reward_active" BOOLEAN NOT NULL
 );
 
-CREATE TABLE "redemptions" (
+CREATE TABLE "redeemed" (
     "id" SERIAL PRIMARY KEY,
     "user_id" INT REFERENCES "users" NOT NULL,
     "reward_id" INT REFERENCES "rewards" NOT NULL,

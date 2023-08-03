@@ -4,6 +4,9 @@ import me from "./me.reducer";
 import rewardsUser from "./rewardsUser.reducer";
 import adminUsers from "./admin/users.reducer";
 import adminRewards from "./admin/rewards.reducer";
+import adminCategories from "./admin/categories.reducer";
+import adminRedeemed from "./admin/redeemed.reducer";
+import adminAwarded from "./admin/awarded.reducer";
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -17,6 +20,9 @@ const rootReducer = combineReducers({
   rewardsUser,
   adminUsers,
   adminRewards,
+  adminCategories,
+  adminRedeemed,
+  adminAwarded,
 });
 
 export default rootReducer;

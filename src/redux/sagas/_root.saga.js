@@ -5,6 +5,9 @@ import meSaga from "./me.saga";
 import rewardsUserSaga from "./rewardsUser.saga";
 import adminUsersSaga from "./admin/users.saga";
 import adminRewardsSaga from "./admin/rewards.saga";
+import adminCategoriesSaga from "./categories.saga";
+import adminRedeemedSaga from "./admin/redeemed.saga";
+import adminAwardedSaga from "./admin/awarded.saga";
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -18,5 +21,8 @@ export default function* rootSaga() {
     rewardsUserSaga(),
     adminUsersSaga(),
     adminRewardsSaga(),
+    adminCategoriesSaga(),
+    adminRedeemedSaga(),
+    adminAwardedSaga(),
   ]);
 }
