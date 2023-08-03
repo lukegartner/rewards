@@ -10,14 +10,11 @@ const UserHome = () => {
   console.log("rewardsUser", rewardsUser);
   useEffect(() => {
     if (!me.attributes) {
-      dispatch({ type: "FETCH_ME", payload: user.sub });
+      dispatch({
+        type: "FETCH_ME",
+        payload: { pco_id: user.sub, username: user.nickname },
+      });
     }
-
-    // Only do this if new user
-    // dispatch({
-    //   type: "POST_REWARDS_USER",
-    //   payload: { pco_id: user.sub, username: user.nickname },
-    // });
   }, []);
   return (
     <main>

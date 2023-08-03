@@ -4,7 +4,7 @@ import { put, takeLatest } from "redux-saga/effects";
 function* fetchMe(action) {
   console.log("payload", action.payload);
   try {
-    const response = yield fetch(`/auth/token/${action.payload}`);
+    const response = yield fetch(`/auth/token/${action.payload.pco_id}`);
     if (!response.ok) {
       throw new Error("Error Fetching Access Token");
     }
