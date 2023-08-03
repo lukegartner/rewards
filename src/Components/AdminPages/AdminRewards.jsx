@@ -3,10 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 
 import DataGrid from "./DataGrid";
 
-// MUI
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-
 const AdminRewards = () => {
   const dispatch = useDispatch();
   const { adminRewards } = useSelector((store) => store);

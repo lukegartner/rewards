@@ -2,6 +2,7 @@ import { Route, useRouteMatch } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import AdminRewards from "./AdminPages/AdminRewards";
+import AdminUsers from "./AdminPages/AdminUsers";
 
 const AdminHome = () => {
   const { path } = useRouteMatch();
@@ -36,6 +37,9 @@ const AdminHome = () => {
       </Route>
       <Route path={`${path}/rewards`} exact>
         <AdminRewards />
+      </Route>
+      <Route path={`${path}/users`} exact>
+        <AdminUsers />
       </Route>
     </div>
   );
