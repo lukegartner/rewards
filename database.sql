@@ -23,7 +23,8 @@ CREATE TABLE "rewards" (
     "reward_value" INT NOT NULL,
     "category_id" INT REFERENCES "reward_categories" NOT NULL,
     "reward_description" VARCHAR (255),
-    "reward_image" VARCHAR (255) 
+    "reward_image" VARCHAR (255).
+    "reward_active" BOOLEAN NOT NULL
 );
 
 CREATE TABLE "redemptions" (
