@@ -2,6 +2,7 @@ import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 import Main from "./Components/Main";
 import UserHome from "./Components/UserHome";
+import AdminHome from "./Components/AdminHome";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import LoginPage from "./Components/LoginPage";
@@ -21,6 +22,9 @@ function App() {
         <Route path="/" exact>
           {(!user || !isAuthenticated) && <LoginPage />}
           {user && isAuthenticated && <UserHome />}
+        </Route>
+        <Route path="/admin" exact>
+          <AdminHome />
         </Route>
         <Footer />
       </Router>
