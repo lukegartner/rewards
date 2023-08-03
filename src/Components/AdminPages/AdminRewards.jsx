@@ -1,9 +1,11 @@
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+import DataGrid from "./DataGrid";
+
 // MUI
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import { DataGrid } from "@mui/x-data-grid";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
 
 const AdminRewards = () => {
   const dispatch = useDispatch();
@@ -59,31 +61,8 @@ const AdminRewards = () => {
       editable: true,
     },
   ];
-  // "reward_image" VARCHAR (255),
-  //     "reward_active" BOOLEAN NOT NULL,
-  //     "reward_count" INT NOT NULL
-  // );
-  return (
-    <Box sx={{ height: 400, width: "100%", mt: "3rem" }}>
-      <Typography variant="h2" align="center">
-        Rewards
-      </Typography>
-      <DataGrid
-        rows={adminRewards}
-        columns={columns}
-        initialState={{
-          pagination: {
-            paginationModel: {
-              pageSize: 5,
-            },
-          },
-        }}
-        pageSizeOptions={[5]}
-        checkboxSelection
-        disableRowSelectionOnClick
-      />
-    </Box>
-  );
+
+  return <DataGrid columns={columns} rows={adminRewards} title="Rewards" />;
 };
 
 export default AdminRewards;
