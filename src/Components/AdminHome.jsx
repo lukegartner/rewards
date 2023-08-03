@@ -1,7 +1,11 @@
+import { Route, useRouteMatch } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
+import AdminRewards from "./AdminPages/AdminRewards";
 
 const AdminHome = () => {
+  const { path } = useRouteMatch();
+  console.log(`${path}/rewards`);
   const dispatch = useDispatch();
   const {
     adminUsers,
@@ -21,7 +25,20 @@ const AdminHome = () => {
     dispatch({ type: "FETCH_REDEEMED_ADMIN" });
     dispatch({ type: "FETCH_AWARDED_ADMIN" });
   }, []);
-  return <h1>AdminHome</h1>;
+
+  // Build reward or user table
+  return (
+    <div>
+      <Route path={path} exact>
+        <h1>Admin Home</h1>
+        <h1>Hi Home</h1>
+        <h1>Admin Home</h1>
+      </Route>
+      <Route path={`${path}/rewards`} exact>
+        <AdminRewards />
+      </Route>
+    </div>
+  );
 };
 
 export default AdminHome;

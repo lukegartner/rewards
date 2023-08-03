@@ -14,7 +14,8 @@ CREATE TABLE "awarded" (
 
 CREATE TABLE "reward_categories" (
     "id" SERIAL PRIMARY KEY,
-    "reward_category" VARCHAR (255) NOT NULL
+    "reward_category" VARCHAR (255) NOT NULL,
+    "category_active" BOOLEAN NOT NULL
 );
 
 CREATE TABLE "rewards" (
@@ -23,8 +24,9 @@ CREATE TABLE "rewards" (
     "reward_value" INT NOT NULL,
     "category_id" INT REFERENCES "reward_categories" NOT NULL,
     "reward_description" VARCHAR (255),
-    "reward_image" VARCHAR (255).
-    "reward_active" BOOLEAN NOT NULL
+    "reward_image" VARCHAR (255),
+    "reward_active" BOOLEAN NOT NULL,
+    "reward_count" INT NOT NULL
 );
 
 CREATE TABLE "redeemed" (

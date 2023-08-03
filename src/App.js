@@ -23,7 +23,7 @@ function App() {
           {(!user || !isAuthenticated) && <LoginPage />}
           {user && isAuthenticated && <UserHome />}
         </Route>
-        <Route path="/admin" exact>
+        <Route path="/admin">
           <AdminHome />
         </Route>
         <Footer />
