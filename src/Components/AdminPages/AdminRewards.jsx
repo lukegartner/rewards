@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import DataGrid from "./DataGrid";
+import DataGridCRUD from "./DataGridCRUD";
 
 const AdminRewards = () => {
   const dispatch = useDispatch();
@@ -58,7 +59,7 @@ const AdminRewards = () => {
     },
   ];
 
-  return <DataGrid columns={columns} rows={adminRewards} title="Rewards" />;
+  return <DataGridCRUD columns={columns} rows={adminRewards} title="Rewards" />;
 };
 
 export default AdminRewards;

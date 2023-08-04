@@ -18,6 +18,8 @@ function* postRewardsUser(action) {
     console.log("Post rewards user failed", error);
   }
 }
+
+// Fetches user from "users" table. If user does not exist it posts the new user to the "users" table.
 function* fetchRewardsUser(action) {
   console.log("payload", action.payload);
   try {
