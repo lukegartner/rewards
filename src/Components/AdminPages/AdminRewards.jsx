@@ -87,6 +87,7 @@ const AdminRewards = () => {
       columns={columns}
       rows={adminRewards}
       title="Rewards"
+      rowTitle="Reward"
       dispatchTypes={dispatchTypes}
     />
   );

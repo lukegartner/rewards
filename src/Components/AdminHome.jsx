@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import AdminRewards from "./AdminPages/AdminRewards";
 import AdminUsers from "./AdminPages/AdminUsers";
 import AdminAwarded from "./AdminPages/AdminAwarded";
+import AdminRedeemed from "./AdminPages/AdminRedeemed";
 
 const AdminHome = () => {
   const { path } = useRouteMatch();
@@ -44,6 +45,9 @@ const AdminHome = () => {
       </Route>
       <Route path={`${path}/awarded`} exact>
         <AdminAwarded />
+      </Route>
+      <Route path={`${path}/redeemed`} exact>
+        <AdminRedeemed />
       </Route>
     </div>
   );

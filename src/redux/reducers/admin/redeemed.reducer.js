@@ -1,4 +1,4 @@
-const adminRedeemedReducer = (state = {}, action) => {
+const adminRedeemedReducer = (state = [], action) => {
   switch (action.type) {
     case "SET_REDEEMED_ADMIN":
       return action.payload;
