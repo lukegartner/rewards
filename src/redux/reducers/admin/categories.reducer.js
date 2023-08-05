@@ -1,4 +1,4 @@
-const adminCategoriesReducer = (state = {}, action) => {
+const adminCategoriesReducer = (state = [], action) => {
   switch (action.type) {
     case "SET_CATEGORIES_ADMIN":
       return action.payload;

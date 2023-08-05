@@ -1,4 +1,4 @@
-const adminRewardsReducer = (state = {}, action) => {
+const adminRewardsReducer = (state = [], action) => {
   switch (action.type) {
     case "SET_REWARDS_ADMIN":
       return action.payload;

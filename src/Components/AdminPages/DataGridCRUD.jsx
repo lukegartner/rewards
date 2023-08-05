@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 
+// MUI
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import AddIcon from "@mui/icons-material/Add";
@@ -14,8 +16,6 @@ import {
   GridActionsCellItem,
   GridRowEditStopReasons,
 } from "@mui/x-data-grid";
-
-const roles = ["Market", "Finance", "Development"];
 
 function EditToolbar(props) {
   const { setRows, setRowModesModel } = props;
@@ -32,20 +32,20 @@ function EditToolbar(props) {
   return (
     <GridToolbarContainer>
       <Button color="primary" startIcon={<AddIcon />} onClick={handleClick}>
-        Add record
+        Add Reward
       </Button>
     </GridToolbarContainer>
   );
 }
 
 export default function FullFeaturedCrudGrid(props) {
+  const dispatch = useDispatch();
   const [rows, setRows] = useState(props.rows);
   const [rowModesModel, setRowModesModel] = useState({});
   useEffect(() => {
     setRows(props.rows);
   }, [props]);
-  console.log("props rows", props.rows);
-  console.log("hello rows", rows);
+
   const handleRowEditStop = (params, event) => {
     if (params.reason === GridRowEditStopReasons.rowFocusOut) {
       event.defaultMuiPrevented = true;
@@ -79,6 +79,13 @@ export default function FullFeaturedCrudGrid(props) {
   const processRowUpdate = (newRow) => {
     const updatedRow = { ...newRow, isNew: false };
     setRows(rows.map((row) => (row.id === newRow.id ? updatedRow : row)));
+    // UPDATE Reward in database
+    if (newRow.isNew) {
+      dispatch({ type: "ADD_REWARD_ADMIN", payload: newRow });
+    } else {
+      dispatch({ type: "EDIT_REWARD_ADMIN", payload: newRow });
+    }
+
     return updatedRow;
   };
 
