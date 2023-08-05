@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 // MUI
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
 import AddIcon from "@mui/icons-material/Add";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/DeleteOutlined";
@@ -62,7 +63,7 @@ export default function FullFeaturedCrudGrid(props) {
 
   const handleDeleteClick = (id) => () => {
     setRows(rows.filter((row) => row.id !== id));
-    dispatch({ type: "DELETE_REWARD_ADMIN", payload: { id } });
+    dispatch({ type: props.dispatchTypes.DELETE, payload: { id } });
   };
 
   const handleCancelClick = (id) => () => {
@@ -82,9 +83,9 @@ export default function FullFeaturedCrudGrid(props) {
     setRows(rows.map((row) => (row.id === newRow.id ? updatedRow : row)));
     // UPDATE Reward in database
     if (newRow.isNew) {
-      dispatch({ type: "ADD_REWARD_ADMIN", payload: newRow });
+      dispatch({ type: props.dispatchTypes.ADD, payload: newRow });
     } else {
-      dispatch({ type: "EDIT_REWARD_ADMIN", payload: newRow });
+      dispatch({ type: props.dispatchTypes.EDIT, payload: newRow });
     }
 
     return updatedRow;
@@ -147,7 +148,7 @@ export default function FullFeaturedCrudGrid(props) {
   return (
     <Box
       sx={{
-        mt: "3rem",
+        mt: "2rem",
         height: 500,
         width: "100%",
         "& .actions": {
@@ -158,6 +159,7 @@ export default function FullFeaturedCrudGrid(props) {
         },
       }}
     >
+      <Typography variant="h4">{props.title}</Typography>
       <DataGrid
         rows={rows}
         columns={columns}
