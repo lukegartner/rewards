@@ -62,6 +62,7 @@ export default function FullFeaturedCrudGrid(props) {
 
   const handleDeleteClick = (id) => () => {
     setRows(rows.filter((row) => row.id !== id));
+    dispatch({ type: "DELETE_REWARD_ADMIN", payload: { id } });
   };
 
   const handleCancelClick = (id) => () => {

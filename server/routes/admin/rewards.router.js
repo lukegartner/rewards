@@ -69,5 +69,19 @@ router.put("/", (req, res) => {
       res.sendStatus(500);
     });
 });
+router.delete("/:id", (req, res) => {
+  const queryText = `
+        DELETE FROM rewards 
+        WHERE id = $1;
+    `;
+  const queryArgs = [req.params.id];
+  pool
+    .query(queryText, queryArgs)
+    .then((response) => res.sendStatus(204))
+    .catch((error) => {
+      console.log(error);
+      res.sendStatus(500);
+    });
+});
 
 module.exports = router;
