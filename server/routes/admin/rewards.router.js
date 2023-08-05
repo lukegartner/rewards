@@ -44,5 +44,30 @@ router.post("/", (req, res) => {
       res.sendStatus(500);
     });
 });
+router.put("/", (req, res) => {
+  const queryText = `
+        UPDATE rewards 
+        SET reward_title =$1, reward_value =$2, category_id =$3, reward_description =$4, reward_image =$5, reward_active =$6, reward_count =$7
+        WHERE $8 = id;
+        
+    `;
+  const queryArgs = [
+    req.body.reward_title,
+    req.body.reward_value,
+    req.body.category_id,
+    req.body.reward_description,
+    req.body.reward_image,
+    req.body.reward_active,
+    req.body.reward_count,
+    req.body.id,
+  ];
+  pool
+    .query(queryText, queryArgs)
+    .then((response) => res.sendStatus(200))
+    .catch((error) => {
+      console.log(error);
+      res.sendStatus(500);
+    });
+});
 
 module.exports = router;
