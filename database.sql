@@ -9,7 +9,7 @@ CREATE TABLE "awarded" (
     "id" SERIAL PRIMARY KEY,
     "user_id" INT REFERENCES "users" NOT NULL,
     "awarded_value" INT NOT NULL,
-    "timestamp" TIMESTAMPTZ NOT NULL
+    "timestamp" TIMESTAMPTZ NOT NULL DEFAULT now()
 );
 
 CREATE TABLE "reward_categories" (
@@ -34,7 +34,7 @@ CREATE TABLE "redeemed" (
     "user_id" INT REFERENCES "users" NOT NULL,
     "reward_id" INT REFERENCES "rewards" NOT NULL,
     "redeemed_value" INT NOT NULL,
-    "timestamp" TIMESTAMPTZ NOT NULL
+    "timestamp" TIMESTAMPTZ NOT NULL DEFAULT now()
 );
 
 
