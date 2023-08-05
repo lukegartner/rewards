@@ -33,7 +33,7 @@ function EditToolbar(props) {
   return (
     <GridToolbarContainer>
       <Button color="primary" startIcon={<AddIcon />} onClick={handleClick}>
-        Add Reward
+        Add {props.rowTitle}
       </Button>
     </GridToolbarContainer>
   );
@@ -172,7 +172,7 @@ export default function FullFeaturedCrudGrid(props) {
           toolbar: EditToolbar,
         }}
         slotProps={{
-          toolbar: { setRows, setRowModesModel },
+          toolbar: { setRows, setRowModesModel, rowTitle: props.rowTitle },
         }}
       />
     </Box>

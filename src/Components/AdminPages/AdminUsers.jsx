@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import DataGrid from "./DataGrid";
+import DataGridCRUD from "./DataGridCRUD";
 
 const AdminUsers = () => {
   const dispatch = useDispatch();
@@ -10,6 +11,20 @@ const AdminUsers = () => {
   useEffect(() => {
     dispatch({ type: "FETCH_USERS_ADMIN" });
   }, []);
+
+  // Dispatch types for editing users table in database
+  const dispatchTypes = {
+    ADD: "ADD_USER_ADMIN",
+    EDIT: "EDIT_USER_ADMIN",
+    DELETE: "DELETE_USER_ADMIN",
+  };
+
+  // Single select column selection options
+  const adminOptions = [
+    { value: true, label: "Admin" },
+    { value: false, label: "User" },
+  ];
+  // These are the columns for the DataGrid on Users page
   const columns = [
     { field: "id", headerName: "ID", width: 70 },
 
@@ -30,16 +45,27 @@ const AdminUsers = () => {
       headerName: "Point Balance",
       width: 120,
       editable: true,
+      type: "number",
     },
     {
       field: "admin",
-      headerName: "Admin",
+      headerName: "Type",
       width: 150,
       editable: true,
+      type: "singleSelect",
+      valueOptions: adminOptions,
     },
   ];
 
-  return <DataGrid columns={columns} rows={adminUsers} title="Users" />;
+  return (
+    <DataGridCRUD
+      columns={columns}
+      rows={adminUsers}
+      title="Users"
+      rowTitle="User"
+      dispatchTypes={dispatchTypes}
+    />
+  );
 };
 
 export default AdminUsers;
