@@ -148,7 +148,7 @@ export default function FullFeaturedCrudGrid(props) {
   return (
     <Box
       sx={{
-        mt: "2rem",
+        mt: 1,
         height: 500,
         width: "100%",
         "& .actions": {
