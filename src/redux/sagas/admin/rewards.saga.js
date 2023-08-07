@@ -13,6 +13,19 @@ function* fetchRewardsAdmin(action) {
     console.log("Rewards get request failed", error);
   }
 }
+function* fetchSelectedReward(action) {
+  try {
+    const response = yield fetch(`/admin/rewards/selected/${action.payload}`);
+    if (!response.ok) {
+      throw new Error("Error Fetching Single Reward");
+    }
+    const selectedReward = yield response.json();
+
+    yield put({ type: "SET_SELECTED_REWARD", payload: selectedReward[0] });
+  } catch (error) {
+    console.log("Single Reward get request failed", error);
+  }
+}
 function* addRewardAdmin(action) {
   try {
     const response = yield fetch("/admin/rewards", {
@@ -66,6 +79,7 @@ function* adminRewardsSaga() {
   yield takeLatest("ADD_REWARD_ADMIN", addRewardAdmin);
   yield takeLatest("EDIT_REWARD_ADMIN", editRewardAdmin);
   yield takeLatest("DELETE_REWARD_ADMIN", deleteRewardAdmin);
+  yield takeLatest("FETCH_SELECTED_REWARD", fetchSelectedReward);
 }
 
 export default adminRewardsSaga;

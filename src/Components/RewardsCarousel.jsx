@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { useTheme } from "@mui/material/styles";
+import { Link } from "react-router-dom";
+// MUI
 import Box from "@mui/material/Box";
 import MobileStepper from "@mui/material/MobileStepper";
 import Paper from "@mui/material/Paper";
@@ -32,48 +34,50 @@ function RewardsCarousel({ rewards, category }) {
   return (
     <Box sx={{ maxWidth: 300, flexGrow: 1, mx: "auto" }}>
       <Typography variant="h5">{category.reward_category}</Typography>
-      <Paper
-        square
-        elevation={0}
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          height: 50,
-          pl: 2,
-          pr: 2,
-          bgcolor: "background.default",
-          justifyContent: "space-between",
-        }}
-      >
-        <Typography>{rewards[activeStep].reward_title}</Typography>
-        <Typography>{rewards[activeStep].reward_value} points</Typography>
-      </Paper>
-      <AutoPlaySwipeableViews
-        axis={theme.direction === "rtl" ? "x-reverse" : "x"}
-        index={activeStep}
-        onChangeIndex={handleStepChange}
-        enableMouseEvents
-      >
-        {rewards.map((step, index) => (
-          <div key={step.id}>
-            {Math.abs(activeStep - index) <= 2 ? (
-              <Box
-                component="img"
-                sx={{
-                  height: 150,
-                  display: "block",
-                  maxWidth: 400,
-                  overflow: "hidden",
-                  mx: "auto",
-                  //   width: "100%",
-                }}
-                src={step.reward_image}
-                alt={step.reward_title}
-              />
-            ) : null}
-          </div>
-        ))}
-      </AutoPlaySwipeableViews>
+      <Link to={`/reward/${rewards[activeStep].id}`}>
+        <Paper
+          square
+          elevation={0}
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            height: 50,
+            pl: 2,
+            pr: 2,
+            bgcolor: "background.default",
+            justifyContent: "space-between",
+          }}
+        >
+          <Typography>{rewards[activeStep].reward_title}</Typography>
+          <Typography>{rewards[activeStep].reward_value} points</Typography>
+        </Paper>
+        <AutoPlaySwipeableViews
+          axis={theme.direction === "rtl" ? "x-reverse" : "x"}
+          index={activeStep}
+          onChangeIndex={handleStepChange}
+          enableMouseEvents
+        >
+          {rewards.map((step, index) => (
+            <div key={step.id}>
+              {Math.abs(activeStep - index) <= 2 ? (
+                <Box
+                  component="img"
+                  sx={{
+                    height: 150,
+                    display: "block",
+                    maxWidth: 400,
+                    overflow: "hidden",
+                    mx: "auto",
+                    //   width: "100%",
+                  }}
+                  src={step.reward_image}
+                  alt={step.reward_title}
+                />
+              ) : null}
+            </div>
+          ))}
+        </AutoPlaySwipeableViews>
+      </Link>
       <MobileStepper
         steps={maxSteps}
         position="static"

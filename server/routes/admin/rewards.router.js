@@ -5,6 +5,7 @@ const categoriesRouter = require("./categories.router");
 
 router.use("/categories", categoriesRouter);
 
+// Get all rewards from database
 router.get("/", (req, res) => {
   const queryText = `
         SELECT rewards.*, reward_category
@@ -12,6 +13,21 @@ router.get("/", (req, res) => {
     `;
   pool
     .query(queryText)
+    .then((response) => res.send(response.rows))
+    .catch((error) => {
+      console.log(error);
+      res.sendStatus(500);
+    });
+});
+// Get single reward from database
+router.get("/selected/:id", (req, res) => {
+  const queryText = `
+        SELECT rewards.*, reward_category
+        FROM "rewards" JOIN "reward_categories" ON rewards.category_id = reward_categories.id
+        WHERE rewards.id = $1;
+    `;
+  pool
+    .query(queryText, [req.params.id])
     .then((response) => res.send(response.rows))
     .catch((error) => {
       console.log(error);

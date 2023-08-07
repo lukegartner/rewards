@@ -46,7 +46,7 @@ const UserHome = () => {
 
         {rewardsUser.admin && <h2>Admin</h2>}
       </Route>
-      <Route path="/reward">
+      <Route path="/reward/:id">
         <SingleReward />
       </Route>
     </main>

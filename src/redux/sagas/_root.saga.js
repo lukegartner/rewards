@@ -5,7 +5,7 @@ import meSaga from "./me.saga";
 import rewardsUserSaga from "./rewardsUser.saga";
 import adminUsersSaga from "./admin/users.saga";
 import adminRewardsSaga from "./admin/rewards.saga";
-import adminCategoriesSaga from "./categories.saga";
+import adminCategoriesSaga from "./admin/categories.saga";
 import adminRedeemedSaga from "./admin/redeemed.saga";
 import adminAwardedSaga from "./admin/awarded.saga";
 
