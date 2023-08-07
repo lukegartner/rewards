@@ -140,11 +140,11 @@ footer .login-section button:hover {
 
 /* Main */
 main {
-  position: absolute;
+  /* position: absolute;
   top: 6vh;
   width: 100vw;
   height: 88vh;
-  overflow: scroll;
+  overflow: scroll; */
 }
 
 /* Rewards Slider*/
@@ -211,8 +211,8 @@ main {
 /* Profile Summary */
 .profile-summary-section {
   background-color: var(--grey-200);
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  /* display: grid;
+  grid-template-columns: 1fr 1fr; */
 }
 .profile-summary-info {
   margin-left: 1rem;
