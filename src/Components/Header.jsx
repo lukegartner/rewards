@@ -1,6 +1,8 @@
 import { pcoImg } from "../utils/images/index";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
+import { useSelector } from "react-redux";
+
 // MUI import AppBar from '@mui/material/AppBar';
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
@@ -14,6 +16,7 @@ import MenuItem from "@mui/material/MenuItem";
 
 const Header = () => {
   const history = useHistory();
+  const { me, rewardsUser } = useSelector((store) => store);
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -39,7 +42,8 @@ const Header = () => {
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           Rewards
         </Typography>
-        <Typography>300pts</Typography>
+        <Typography>{rewardsUser.balance}pts</Typography>
+        {/* <Avatar src={me.attributes.avatar} alt="avatar"  /> */}
       </Toolbar>
       <Menu
         id="basic-menu"
