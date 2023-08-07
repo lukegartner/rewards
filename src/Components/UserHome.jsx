@@ -34,8 +34,11 @@ const UserHome = () => {
       <UserProfileSummary />
 
       {rewardsReady &&
-        rewardsByCategory.map((category) => (
-          <RewardsCarousel rewards={category} />
+        rewardsByCategory.map((rewards, index) => (
+          <RewardsCarousel
+            rewards={rewards}
+            category={adminCategories[index]}
+          />
         ))}
 
       {rewardsUser.admin && <h2>Admin</h2>}

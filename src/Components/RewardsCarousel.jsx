@@ -12,33 +12,10 @@ import { autoPlay } from "react-swipeable-views-utils-react-18-fix";
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
-const images = [
-  {
-    label: "San Francisco – Oakland Bay Bridge, United States",
-    imgPath:
-      "https://images.unsplash.com/photo-1537944434965-cf4679d1a598?auto=format&fit=crop&w=400&h=250&q=60",
-  },
-  {
-    label: "Bird",
-    imgPath:
-      "https://images.unsplash.com/photo-1538032746644-0212e812a9e7?auto=format&fit=crop&w=400&h=250&q=60",
-  },
-  {
-    label: "Bali, Indonesia",
-    imgPath:
-      "https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=400&h=250",
-  },
-  {
-    label: "Goč, Serbia",
-    imgPath:
-      "https://images.unsplash.com/photo-1512341689857-198e7e2f3ca8?auto=format&fit=crop&w=400&h=250&q=60",
-  },
-];
-
-function RewardsCarousel({ rewards = [] }) {
+function RewardsCarousel({ rewards, category }) {
   const theme = useTheme();
   const [activeStep, setActiveStep] = useState(0);
-  const maxSteps = images.length;
+  const maxSteps = rewards.length;
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -53,7 +30,8 @@ function RewardsCarousel({ rewards = [] }) {
   };
 
   return (
-    <Box sx={{ maxWidth: 400, flexGrow: 1 }}>
+    <Box sx={{ maxWidth: 300, flexGrow: 1, mx: "auto" }}>
+      <Typography variant="h5">{category.reward_category}</Typography>
       <Paper
         square
         elevation={0}
@@ -62,10 +40,13 @@ function RewardsCarousel({ rewards = [] }) {
           alignItems: "center",
           height: 50,
           pl: 2,
+          pr: 2,
           bgcolor: "background.default",
+          justifyContent: "space-between",
         }}
       >
         <Typography>{rewards[activeStep].reward_title}</Typography>
+        <Typography>{rewards[activeStep].reward_value} points</Typography>
       </Paper>
       <AutoPlaySwipeableViews
         axis={theme.direction === "rtl" ? "x-reverse" : "x"}
@@ -79,11 +60,12 @@ function RewardsCarousel({ rewards = [] }) {
               <Box
                 component="img"
                 sx={{
-                  height: 255,
+                  height: 150,
                   display: "block",
                   maxWidth: 400,
                   overflow: "hidden",
-                  width: "100%",
+                  mx: "auto",
+                  //   width: "100%",
                 }}
                 src={step.reward_image}
                 alt={step.reward_title}
