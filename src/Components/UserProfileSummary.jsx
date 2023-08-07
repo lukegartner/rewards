@@ -11,7 +11,7 @@ import Card from "@mui/material/Card";
 const UserProfileSummary = () => {
   const { user, isAuthenticated } = useAuth0();
   const isUser = isAuthenticated && user;
-  const me = useSelector((store) => store.me);
+  const { me, rewardsUser } = useSelector((store) => store);
 
   useEffect(() => {}, []);
   return (
@@ -22,7 +22,7 @@ const UserProfileSummary = () => {
           src={me.attributes ? me.attributes.avatar : pcoImg}
           alt="avatar"
         />
-        <Typography>327pts</Typography>
+        <Typography>{rewardsUser.balance} points</Typography>
       </Card>
     </Box>
   );
