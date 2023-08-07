@@ -19,7 +19,7 @@ function App() {
     <div className="App">
       <Router>
         <Header />
-        <Route path="/" exact>
+        <Route path="/">
           {(!user || !isAuthenticated) && <LoginPage />}
           {user && isAuthenticated && <UserHome />}
         </Route>

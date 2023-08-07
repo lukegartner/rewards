@@ -1,9 +1,11 @@
+import { Route, useRouteMatch } from "react-router-dom";
 import { useEffect } from "react";
 import ProfileSummary from "./ProfileSummary";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useDispatch, useSelector } from "react-redux";
 import UserProfileSummary from "./UserProfileSummary";
 import RewardsCarousel from "./RewardsCarousel";
+import SingleReward from "./SingleReward";
 
 const UserHome = () => {
   const dispatch = useDispatch();
@@ -31,17 +33,22 @@ const UserHome = () => {
   }, []);
   return (
     <main>
-      <UserProfileSummary />
+      <Route path="/" exact>
+        <UserProfileSummary />
 
-      {rewardsReady &&
-        rewardsByCategory.map((rewards, index) => (
-          <RewardsCarousel
-            rewards={rewards}
-            category={adminCategories[index]}
-          />
-        ))}
+        {rewardsReady &&
+          rewardsByCategory.map((rewards, index) => (
+            <RewardsCarousel
+              rewards={rewards}
+              category={adminCategories[index]}
+            />
+          ))}
 
-      {rewardsUser.admin && <h2>Admin</h2>}
+        {rewardsUser.admin && <h2>Admin</h2>}
+      </Route>
+      <Route path="/reward">
+        <SingleReward />
+      </Route>
     </main>
   );
 };
