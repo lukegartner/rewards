@@ -10,11 +10,36 @@ import { useParams } from "react-router-dom";
 const SingleReward = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
-  const { selectedReward } = useSelector((store) => store);
+  const { selectedReward, rewardsUser } = useSelector((store) => store);
 
   useEffect(() => {
     dispatch({ type: "FETCH_SELECTED_REWARD", payload: id });
   }, []);
+
+  const redeemReward = () => {
+    dispatch({
+      type: "ADD_REDEMPTION_ADMIN",
+      payload: {
+        user_id: rewardsUser.id,
+        reward_id: selectedReward.id,
+        redeemed_value: selectedReward.reward_value,
+      },
+    });
+    dispatch({
+      type: "EDIT_USER_ADMIN",
+      payload: {
+        ...rewardsUser,
+        balance: rewardsUser.balance - selectedReward.reward_value,
+      },
+    });
+    dispatch({
+      type: "SET_REWARDS_USER",
+      payload: {
+        ...rewardsUser,
+        balance: rewardsUser.balance - selectedReward.reward_value,
+      },
+    });
+  };
 
   return (
     <Container sx={{ my: 1 }}>
@@ -27,7 +52,12 @@ const SingleReward = () => {
         alt={selectedReward.reward_title}
         sx={{ width: 250, mx: "auto", my: 8 }}
       />
-      <Button variant="contained" sx={{ width: "100%", mx: "auto" }}>
+      <Button
+        variant="contained"
+        disabled={rewardsUser.balance < selectedReward.reward_value}
+        sx={{ width: "100%", mx: "auto" }}
+        onClick={redeemReward}
+      >
         Redeem {selectedReward.reward_value}
       </Button>
     </Container>

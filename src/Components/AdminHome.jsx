@@ -21,6 +21,7 @@ const AdminHome = () => {
   console.log("adminRewards", adminRewards);
   console.log("adminCategories", adminCategories);
   console.log("adminAwarded", adminAwarded);
+  console.log("adminRedeemed", adminRedeemed);
   useEffect(() => {
     dispatch({ type: "FETCH_USERS_ADMIN" });
     dispatch({ type: "FETCH_REWARDS_ADMIN" });
