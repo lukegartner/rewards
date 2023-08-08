@@ -1,11 +1,14 @@
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import Paper from "@mui/material/Paper";
-import Container from "@mui/material/Container";
-import Box from "@mui/material/Box";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
+
+// MUI
+import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
+import Container from "@mui/material/Container";
+import Box from "@mui/material/Box";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import IconButton from "@mui/material/IconButton";
 
 const SingleReward = () => {
   const dispatch = useDispatch();
@@ -43,6 +46,11 @@ const SingleReward = () => {
 
   return (
     <Container sx={{ my: 1 }}>
+      <Link to="/">
+        <IconButton sx={{ py: 0.5, px: 0.5 }}>
+          <ArrowBackIcon sx={{ color: "primary.main" }} />
+        </IconButton>
+      </Link>
       <Typography variant="h3">{selectedReward.reward_title}</Typography>
       <Typography sx={{}}>{selectedReward.reward_description}</Typography>
       <Box

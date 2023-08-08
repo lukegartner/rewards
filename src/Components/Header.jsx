@@ -1,6 +1,6 @@
 import { pcoImg } from "../utils/images/index";
 import { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 // MUI import AppBar from '@mui/material/AppBar';
@@ -56,36 +56,19 @@ const Header = () => {
           "aria-labelledby": "basic-button",
         }}
       >
-        <MenuItem
-          onClick={() => {
-            handleClose();
-            history.push("/admin/users");
-          }}
-        >
+        <MenuItem component={Link} to="/" onClick={handleClose}>
+          Home
+        </MenuItem>
+        <MenuItem component={Link} to="/admin/users" onClick={handleClose}>
           Users - Admin
         </MenuItem>
-        <MenuItem
-          onClick={() => {
-            handleClose();
-            history.push("/admin/rewards");
-          }}
-        >
+        <MenuItem component={Link} to="/admin/rewards" onClick={handleClose}>
           Rewards - Admin
         </MenuItem>
-        <MenuItem
-          onClick={() => {
-            handleClose();
-            history.push("/admin/redeemed");
-          }}
-        >
+        <MenuItem component={Link} to="/admin/redeemed" onClick={handleClose}>
           Redeemed - Admin
         </MenuItem>
-        <MenuItem
-          onClick={() => {
-            handleClose();
-            history.push("/admin/awarded");
-          }}
-        >
+        <MenuItem component={Link} to="/admin/awarded" onClick={handleClose}>
           Awarded - Admin
         </MenuItem>
       </Menu>
