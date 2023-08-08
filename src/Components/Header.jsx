@@ -42,7 +42,9 @@ const Header = () => {
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           Rewards
         </Typography>
-        <Typography>{rewardsUser.balance}pts</Typography>
+        {rewardsUser.balance && (
+          <Typography>{rewardsUser.balance}pts</Typography>
+        )}
         {/* <Avatar src={me.attributes.avatar} alt="avatar"  /> */}
       </Toolbar>
       <Menu
