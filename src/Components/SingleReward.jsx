@@ -50,7 +50,13 @@ const SingleReward = () => {
         display="flex"
         src={selectedReward.reward_image}
         alt={selectedReward.reward_title}
-        sx={{ width: 250, mx: "auto", my: 8 }}
+        sx={{
+          height: 250,
+          maxWidth: "100%",
+          mx: "auto",
+          my: 8,
+          objectFit: "cover",
+        }}
       />
       <Button
         variant="contained"
