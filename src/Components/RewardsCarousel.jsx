@@ -34,7 +34,11 @@ function RewardsCarousel({ rewards, category }) {
   return (
     <Box sx={{ maxWidth: 300, flexGrow: 1, mx: "auto" }}>
       <Typography variant="h5">{category.reward_category}</Typography>
-      <Link to={`/reward/${rewards[activeStep].id}`}>
+      <Box
+        component={Link}
+        to={`/reward/${rewards[activeStep].id}`}
+        sx={{ textDecoration: "none" }}
+      >
         <Paper
           square
           elevation={0}
@@ -77,7 +81,7 @@ function RewardsCarousel({ rewards, category }) {
             </div>
           ))}
         </AutoPlaySwipeableViews>
-      </Link>
+      </Box>
       <MobileStepper
         steps={maxSteps}
         position="static"
