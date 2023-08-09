@@ -59,18 +59,27 @@ const Header = () => {
         <MenuItem component={Link} to="/" onClick={handleClose}>
           Home
         </MenuItem>
-        <MenuItem component={Link} to="/admin/users" onClick={handleClose}>
-          Users - Admin
-        </MenuItem>
-        <MenuItem component={Link} to="/admin/rewards" onClick={handleClose}>
-          Rewards - Admin
-        </MenuItem>
-        <MenuItem component={Link} to="/admin/redeemed" onClick={handleClose}>
-          Redeemed - Admin
-        </MenuItem>
-        <MenuItem component={Link} to="/admin/awarded" onClick={handleClose}>
-          Awarded - Admin
-        </MenuItem>
+        {rewardsUser.admin && (
+          <MenuItem component={Link} to="/admin/users" onClick={handleClose}>
+            Users - Admin
+          </MenuItem>
+        )}
+
+        {rewardsUser.admin && (
+          <MenuItem component={Link} to="/admin/rewards" onClick={handleClose}>
+            Rewards - Admin
+          </MenuItem>
+        )}
+        {rewardsUser.admin && (
+          <MenuItem component={Link} to="/admin/redeemed" onClick={handleClose}>
+            Redeemed - Admin
+          </MenuItem>
+        )}
+        {rewardsUser.admin && (
+          <MenuItem component={Link} to="/admin/awarded" onClick={handleClose}>
+            Awarded - Admin
+          </MenuItem>
+        )}
       </Menu>
     </AppBar>
   );
