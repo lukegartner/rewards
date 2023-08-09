@@ -33,6 +33,7 @@ CREATE TABLE "rewards" (
 
 CREATE TABLE "redeemed" (
     "id" SERIAL PRIMARY KEY,
+    "complete" BOOLEAN NOT NULL,
     "user_id" INT REFERENCES "users" NOT NULL,
     "reward_id" INT REFERENCES "rewards" NOT NULL,
     "redeemed_value" INT NOT NULL,

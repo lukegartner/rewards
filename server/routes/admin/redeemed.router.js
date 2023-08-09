@@ -14,13 +14,14 @@ router.get("/", (req, res) => {
 // Add new redeemed from admin page
 router.post("/", (req, res) => {
   const queryText = `
-        INSERT INTO redeemed (user_id, reward_id, redeemed_value)
-        VALUES ($1, $2, $3);
+        INSERT INTO redeemed (user_id,  reward_id, redeemed_value, complete)
+        VALUES ($1, $2, $3, $4);
     `;
   const queryArgs = [
     req.body.user_id,
     req.body.reward_id,
     req.body.redeemed_value,
+    req.body.complete,
   ];
   pool
     .query(queryText, queryArgs)
@@ -35,8 +36,8 @@ router.post("/", (req, res) => {
 router.put("/", (req, res) => {
   const queryText = `
         UPDATE redeemed
-        SET user_id = $1, reward_id = $2, redeemed_value = $3
-        WHERE $4 = id;
+        SET user_id = $1, reward_id = $2, redeemed_value = $3, complete = $5
+        WHERE id = $4;
         
     `;
   const queryArgs = [
@@ -44,6 +45,7 @@ router.put("/", (req, res) => {
     req.body.reward_id,
     req.body.redeemed_value,
     req.body.id,
+    req.body.complete,
   ];
   pool
     .query(queryText, queryArgs)

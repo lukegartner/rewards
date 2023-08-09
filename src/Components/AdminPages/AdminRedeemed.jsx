@@ -26,13 +26,24 @@ const AdminRedeemed = () => {
   const rewardOptions = adminRewards.map((reward) => {
     return { value: reward.id, label: reward.reward_title };
   });
+  const completeOptions = [
+    { value: true, label: "Complete" },
+    { value: false, label: "Pending" },
+  ];
   const userOptions = adminUsers.map((user) => {
     return { value: user.id, label: user.username };
   });
   // These are the columns for the DataGrid on Rewards page
   const columns = [
     { field: "id", headerName: "ID", width: 70 },
-
+    {
+      field: "complete",
+      headerName: "Status",
+      width: 120,
+      editable: true,
+      type: "singleSelect",
+      valueOptions: completeOptions,
+    },
     {
       field: "user_id",
       headerName: "Username",

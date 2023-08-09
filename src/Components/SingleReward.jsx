@@ -23,6 +23,7 @@ const SingleReward = () => {
     dispatch({
       type: "ADD_REDEMPTION_ADMIN",
       payload: {
+        complete: false,
         user_id: rewardsUser.id,
         reward_id: selectedReward.id,
         redeemed_value: selectedReward.reward_value,
