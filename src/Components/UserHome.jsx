@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import UserProfileSummary from "./UserProfileSummary";
 import RewardsCarousel from "./RewardsCarousel";
 import SingleReward from "./SingleReward";
+import UserHistory from "./UserHistory";
 
 const UserHome = () => {
   const dispatch = useDispatch();
@@ -37,23 +38,6 @@ const UserHome = () => {
       dispatch({ type: "FETCH_CATEGORIES_ADMIN" });
     }
   }, []);
-
-  // Give rewards for new confirmed services
-  // useEffect(() => {
-  //   userSchedule.forEach((service) => {
-  //     if (!userAwarded.some((award) => service.id === award.service_id)) {
-  //       dispatch({
-  //         type: "ADD_AWARD_ADMIN",
-  //         payload: {
-  //           user_id: rewardsUser.id,
-  //           awarded_value: 20,
-  //           service_id: service.id,
-  //           award_description: `${service.attributes.service_type_name}, ${service.attributes.short_dates}, ${service.attributes.team_name}, ${service.attributes.team_position_name} `,
-  //         },
-  //       });
-  //     }
-  //   });
-  // }, [userSchedule]);
   return (
     <main>
       <Route path="/" exact>
@@ -71,6 +55,9 @@ const UserHome = () => {
       </Route>
       <Route path="/reward/:id">
         <SingleReward />
+      </Route>
+      <Route path="/history">
+        <UserHistory />
       </Route>
     </main>
   );

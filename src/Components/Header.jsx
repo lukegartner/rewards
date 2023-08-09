@@ -59,6 +59,9 @@ const Header = () => {
         <MenuItem component={Link} to="/" onClick={handleClose}>
           Home
         </MenuItem>
+        <MenuItem component={Link} to="/history" onClick={handleClose}>
+          History
+        </MenuItem>
         {rewardsUser.admin && (
           <MenuItem component={Link} to="/admin/users" onClick={handleClose}>
             Users - Admin

@@ -43,7 +43,10 @@ router.get("/awarded/:id", (req, res) => {
     });
 });
 router.get("/redeemed/:id", (req, res) => {
-  const queryText = `SELECT * FROM "redeemed" WHERE user_id = $1`;
+  const queryText = `
+  SELECT redeemed.*, reward_title FROM 
+  "redeemed" JOIN "rewards" ON redeemed.reward_id = rewards.id
+  WHERE user_id = $1;`;
   const queryArgs = [req.params.id];
 
   pool
