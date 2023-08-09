@@ -30,6 +30,11 @@ function* fetchRewardsUser(action) {
     const rewardsUser = yield response.json();
     if (rewardsUser.length === 1) {
       yield put({ type: "SET_REWARDS_USER", payload: rewardsUser[0] });
+      yield put({
+        type: "FETCH_USER_AWARDED",
+        payload: { ...action.payload, rewardsUser: rewardsUser[0] },
+      });
+      yield put({ type: "FETCH_USER_REDEEMED", payload: rewardsUser[0] });
     }
     if (rewardsUser.length === 0) {
       yield put({ type: "POST_REWARDS_USER", payload: action.payload });
@@ -39,9 +44,44 @@ function* fetchRewardsUser(action) {
   }
 }
 
+function* fetchUserAwarded(action) {
+  try {
+    const response = yield fetch(
+      `/rewards-user/awarded/${action.payload.rewardsUser.id}`
+    );
+    if (!response.ok) {
+      throw new Error("Error Fetching User Awarded");
+    }
+    const userAwarded = yield response.json();
+
+    yield put({ type: "SET_USER_AWARDED", payload: userAwarded });
+    yield put({
+      type: "FETCH_USER_SCHEDULE",
+      payload: { ...action.payload, userAwarded },
+    });
+  } catch (error) {
+    console.log("User Awarded get request failed", error);
+  }
+}
+function* fetchUserRedeemed(action) {
+  try {
+    const response = yield fetch(`/rewards-user/redeemed/${action.payload.id}`);
+    if (!response.ok) {
+      throw new Error("Error Fetching User Redeemed");
+    }
+    const userRedeemed = yield response.json();
+
+    yield put({ type: "SET_USER_REDEEMED", payload: userRedeemed });
+  } catch (error) {
+    console.log("User Redeemed get request failed", error);
+  }
+}
+
 function* rewardsUserSaga() {
   yield takeLatest("POST_REWARDS_USER", postRewardsUser);
   yield takeLatest("FETCH_REWARDS_USER", fetchRewardsUser);
+  yield takeLatest("FETCH_USER_AWARDED", fetchUserAwarded);
+  yield takeLatest("FETCH_USER_REDEEMED", fetchUserRedeemed);
 }
 
 export default rewardsUserSaga;

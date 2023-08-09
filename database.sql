@@ -9,6 +9,8 @@ CREATE TABLE "awarded" (
     "id" SERIAL PRIMARY KEY,
     "user_id" INT REFERENCES "users" NOT NULL,
     "awarded_value" INT NOT NULL,
+    "service_id" INT,
+    "award_description" VARCHAR (255) NOT NULL,
     "timestamp" TIMESTAMPTZ NOT NULL DEFAULT now()
 );
 

@@ -30,4 +30,29 @@ router.get("/:pco_id", (req, res) => {
     });
 });
 
+router.get("/awarded/:id", (req, res) => {
+  const queryText = `SELECT * FROM "awarded" WHERE user_id = $1`;
+  const queryArgs = [req.params.id];
+
+  pool
+    .query(queryText, queryArgs)
+    .then((response) => res.send(response.rows))
+    .catch((error) => {
+      console.log(error);
+      res.sendStatus(500);
+    });
+});
+router.get("/redeemed/:id", (req, res) => {
+  const queryText = `SELECT * FROM "redeemed" WHERE user_id = $1`;
+  const queryArgs = [req.params.id];
+
+  pool
+    .query(queryText, queryArgs)
+    .then((response) => res.send(response.rows))
+    .catch((error) => {
+      console.log(error);
+      res.sendStatus(500);
+    });
+});
+
 module.exports = router;

@@ -9,18 +9,24 @@ import SingleReward from "./SingleReward";
 
 const UserHome = () => {
   const dispatch = useDispatch();
-  const { me, rewardsUser, adminRewards, adminCategories } = useSelector(
-    (store) => store
-  );
-  console.log("test", adminRewards, adminCategories);
+  const {
+    me,
+    rewardsUser,
+    adminRewards,
+    adminCategories,
+    userSchedule,
+    userAwarded,
+    userRedeemed,
+  } = useSelector((store) => store);
+
   const rewardsByCategory = adminCategories.map((category) =>
     adminRewards.filter((reward) => reward.category_id === category.id)
   );
-  console.log("rewardsbycategory", rewardsByCategory);
+
   const rewardsReady =
     adminRewards.length > 0 && adminCategories.length > 0 && rewardsByCategory;
   const { user, isAuthenticated } = useAuth0();
-  console.log("rewardsUser", rewardsUser);
+
   useEffect(() => {
     if (!me.attributes) {
       dispatch({
@@ -31,6 +37,23 @@ const UserHome = () => {
       dispatch({ type: "FETCH_CATEGORIES_ADMIN" });
     }
   }, []);
+
+  // Give rewards for new confirmed services
+  // useEffect(() => {
+  //   userSchedule.forEach((service) => {
+  //     if (!userAwarded.some((award) => service.id === award.service_id)) {
+  //       dispatch({
+  //         type: "ADD_AWARD_ADMIN",
+  //         payload: {
+  //           user_id: rewardsUser.id,
+  //           awarded_value: 20,
+  //           service_id: service.id,
+  //           award_description: `${service.attributes.service_type_name}, ${service.attributes.short_dates}, ${service.attributes.team_name}, ${service.attributes.team_position_name} `,
+  //         },
+  //       });
+  //     }
+  //   });
+  // }, [userSchedule]);
   return (
     <main>
       <Route path="/" exact>

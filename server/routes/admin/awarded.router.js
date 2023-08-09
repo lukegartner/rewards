@@ -15,10 +15,15 @@ router.get("/", (req, res) => {
 // Add new award from admin page
 router.post("/", (req, res) => {
   const queryText = `
-        INSERT INTO awarded (user_id, awarded_value)
-        VALUES ($1, $2);
+        INSERT INTO awarded (user_id, awarded_value, service_id, award_description)
+        VALUES ($1, $2, $3, $4);
     `;
-  const queryArgs = [req.body.user_id, req.body.awarded_value];
+  const queryArgs = [
+    req.body.user_id,
+    req.body.awarded_value,
+    req.body.service_id,
+    req.body.award_description,
+  ];
   pool
     .query(queryText, queryArgs)
     .then((response) => res.sendStatus(200))
@@ -32,11 +37,17 @@ router.post("/", (req, res) => {
 router.put("/", (req, res) => {
   const queryText = `
         UPDATE awarded
-        SET user_id = $1, awarded_value = $2
-        WHERE $3 = id;
+        SET user_id = $1, awarded_value = $2, service_id = $3, award_description = $4
+        WHERE $5 = id;
         
     `;
-  const queryArgs = [req.body.user_id, req.body.awarded_value, req.body.id];
+  const queryArgs = [
+    req.body.user_id,
+    req.body.awarded_value,
+    req.body.service_id,
+    req.body.award_description,
+    req.body.id,
+  ];
   pool
     .query(queryText, queryArgs)
     .then((response) => res.sendStatus(200))

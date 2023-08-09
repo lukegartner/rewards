@@ -45,6 +45,19 @@ const AdminAwarded = () => {
       type: "number",
     },
     {
+      field: "service_id",
+      headerName: "Service ID",
+      width: 120,
+      editable: true,
+      type: "number",
+    },
+    {
+      field: "award_description",
+      headerName: "Description",
+      width: 150,
+      editable: true,
+    },
+    {
       field: "timestamp",
       headerName: "Timestamp",
       width: 150,

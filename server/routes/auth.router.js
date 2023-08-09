@@ -45,6 +45,21 @@ router.get("/me", (req, res) => {
     })
     .catch((error) => console.log(error));
 });
+router.get("/schedule/:userId", (req, res) => {
+  console.log("user id", req.params.userId);
+  fetch(
+    `https://api.planningcenteronline.com/services/v2/people/${req.params.userId}/schedules`,
+    {
+      // prettier-ignore
+      headers: { "Authorization":  `Bearer ${pcoAccessToken}` },
+    }
+  )
+    .then((response) => response.json())
+    .then((userSchedule) => {
+      res.send(userSchedule);
+    })
+    .catch((error) => console.log(error));
+});
 
 module.exports = router;
 
