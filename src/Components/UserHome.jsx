@@ -50,8 +50,6 @@ const UserHome = () => {
               category={adminCategories[index]}
             />
           ))}
-
-        {rewardsUser.admin && <h2>Admin</h2>}
       </Route>
       <Route path="/reward/:id">
         <SingleReward />
