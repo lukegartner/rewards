@@ -68,25 +68,27 @@ function RewardsCarousel({ rewards, category }) {
               onChangeIndex={handleStepChange}
               enableMouseEvents
             >
-              {rewards.map((step, index) => (
-                <div key={step.id}>
-                  {Math.abs(activeStep - index) <= 2 ? (
-                    <Box
-                      component="img"
-                      sx={{
-                        height: 150,
-                        display: "block",
-                        maxWidth: 400,
-                        overflow: "hidden",
-                        mx: "auto",
-                        //   width: "100%",
-                      }}
-                      src={step.reward_image}
-                      alt={step.reward_title}
-                    />
-                  ) : null}
-                </div>
-              ))}
+              {rewards.map((step, index) => {
+                return (
+                  <div key={step.id}>
+                    {Math.abs(activeStep - index) <= 2 ? (
+                      <Box
+                        component="img"
+                        sx={{
+                          height: 150,
+                          display: "block",
+                          maxWidth: 400,
+                          overflow: "hidden",
+                          mx: "auto",
+                          //   width: "100%",
+                        }}
+                        src={step.reward_image}
+                        alt={step.reward_title}
+                      />
+                    ) : null}
+                  </div>
+                );
+              })}
             </AutoPlaySwipeableViews>
           </Box>
           <MobileStepper

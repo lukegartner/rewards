@@ -46,7 +46,7 @@ const UserHome = () => {
         {rewardsReady &&
           rewardsByCategory.map((rewards, index) => (
             <RewardsCarousel
-              rewards={rewards}
+              rewards={rewards.filter(({ reward_active }) => reward_active)}
               category={adminCategories[index]}
             />
           ))}
