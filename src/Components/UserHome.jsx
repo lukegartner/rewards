@@ -20,9 +20,11 @@ const UserHome = () => {
     userRedeemed,
   } = useSelector((store) => store);
 
-  const rewardsByCategory = adminCategories.map((category) =>
-    adminRewards.filter((reward) => reward.category_id === category.id)
-  );
+  const rewardsByCategory = adminCategories
+    .filter(({ category_active }) => category_active)
+    .map((category) =>
+      adminRewards.filter((reward) => reward.category_id === category.id)
+    );
 
   const rewardsReady =
     adminRewards.length > 0 && adminCategories.length > 0 && rewardsByCategory;
