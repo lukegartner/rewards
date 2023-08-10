@@ -7,6 +7,7 @@ import UserProfileSummary from "./UserProfileSummary";
 import RewardsCarousel from "./RewardsCarousel";
 import SingleReward from "./SingleReward";
 import UserHistory from "./UserHistory";
+import UserFriends from "./UserFriends";
 
 const UserHome = () => {
   const dispatch = useDispatch();
@@ -58,6 +59,9 @@ const UserHome = () => {
       </Route>
       <Route path="/history">
         <UserHistory />
+      </Route>
+      <Route path="/friends">
+        <UserFriends />
       </Route>
     </main>
   );
