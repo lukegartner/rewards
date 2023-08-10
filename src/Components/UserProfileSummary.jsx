@@ -16,8 +16,8 @@ const UserProfileSummary = () => {
   useEffect(() => {}, []);
   return (
     <Box>
-      <Card>
-        <Typography variant="h4">{isUser ? user.nickname : "user"}</Typography>
+      <Card sx={{ width: "95%", mx: "auto", my: 1, py: 0.5, px: 1 }}>
+        <Typography variant="h5">{isUser ? user.nickname : "user"}</Typography>
         <Avatar
           src={me.attributes ? me.attributes.avatar : pcoImg}
           alt="avatar"
