@@ -2,6 +2,7 @@ CREATE TABLE "users" (
     "id" SERIAL PRIMARY KEY,
     "pco_id" VARCHAR (255) NOT NULL,
     "username" VARCHAR (255) NOT NULL,
+    "avatar" VARCHAR (255) NOT NULL,
     "balance" INT NOT NULL,
     "admin" BOOLEAN NOT NULL
 );

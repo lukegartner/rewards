@@ -12,7 +12,10 @@ function* fetchMe(action) {
     const me = yield meResponse.json();
 
     yield put({ type: "SET_ME", payload: me.data });
-    yield put({ type: "FETCH_REWARDS_USER", payload: action.payload });
+    yield put({
+      type: "FETCH_REWARDS_USER",
+      payload: { ...action.payload, avatar: me.data.attributes.avatar },
+    });
   } catch (error) {
     console.log("User get request failed", error);
   }

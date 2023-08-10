@@ -50,10 +50,16 @@ const AdminUsers = () => {
     {
       field: "admin",
       headerName: "Type",
-      width: 150,
+      width: 70,
       editable: true,
       type: "singleSelect",
       valueOptions: adminOptions,
+    },
+    {
+      field: "avatar",
+      headerName: "Avatar",
+      width: 150,
+      editable: true,
     },
   ];
 

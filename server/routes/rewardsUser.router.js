@@ -4,9 +4,9 @@ const router = express.Router();
 
 router.post("/", (req, res) => {
   const queryText = `
-  INSERT INTO "users" (pco_id, username, balance, admin)
-  VALUES ($1, $2, 0, FALSE);`;
-  const queryArgs = [req.body.pco_id, req.body.username];
+  INSERT INTO "users" (pco_id, username, balance, admin, avatar)
+  VALUES ($1, $2, 0, FALSE, $3);`;
+  const queryArgs = [req.body.pco_id, req.body.username, req.body.avatar];
 
   pool
     .query(queryText, queryArgs)

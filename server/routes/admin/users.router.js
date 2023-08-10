@@ -16,15 +16,16 @@ router.get("/", (req, res) => {
 router.post("/", (req, res) => {
   const queryText = `
         INSERT INTO users
-        (username, pco_id, balance, admin)
+        (username, pco_id, balance, admin, avatar)
         VALUES
-        ($1, $2, $3, $4);
+        ($1, $2, $3, $4, $5);
     `;
   const queryArgs = [
     req.body.username,
     req.body.pco_id,
     req.body.balance,
     req.body.admin,
+    req.body.avatar,
   ];
   pool
     .query(queryText, queryArgs)
@@ -39,14 +40,15 @@ router.post("/", (req, res) => {
 router.put("/", (req, res) => {
   const queryText = `
         UPDATE users
-        SET username = $1, balance = $2, admin = $3 
-        WHERE $4 = id;
+        SET username = $1, balance = $2, admin = $3, avatar = $4 
+        WHERE $5 = id;
         
     `;
   const queryArgs = [
     req.body.username,
     req.body.balance,
     req.body.admin,
+    req.body.avatar,
     req.body.id,
   ];
   pool
