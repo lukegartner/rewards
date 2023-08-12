@@ -57,6 +57,15 @@ const UserFriends = () => {
         award_description: `Gift From ${rewardsUser.username}`,
       },
     });
+    dispatch({
+      type: "ADD_REDEMPTION_ADMIN",
+      payload: {
+        user_id: rewardsUser.id,
+        reward_id: 0,
+        redeemed_value: value,
+        complete: true,
+      },
+    });
 
     dispatch({
       type: "EDIT_USER_ADMIN",
@@ -92,7 +101,10 @@ const UserFriends = () => {
                 ></Avatar>
                 <Typography align="center">
                   {user.balance} points{" "}
-                  <IconButton onClick={() => handleOpen(user)}>
+                  <IconButton
+                    onClick={() => handleOpen(user)}
+                    disabled={user.id === rewardsUser.id ? true : false}
+                  >
                     <RedeemIcon fontSize="small" color="primary" />
                   </IconButton>
                 </Typography>

@@ -6,6 +6,8 @@ CREATE TABLE "users" (
     "balance" INT NOT NULL,
     "admin" BOOLEAN NOT NULL
 );
+
+
 CREATE TABLE "awarded" (
     "id" SERIAL PRIMARY KEY,
     "user_id" INT REFERENCES "users" NOT NULL,
@@ -25,7 +27,7 @@ CREATE TABLE "rewards" (
     "id" SERIAL PRIMARY KEY,
     "reward_title" VARCHAR (255) NOT NULL,
     "reward_value" INT NOT NULL,
-    "category_id" INT REFERENCES "reward_categories" NOT NULL,
+    "category_id" INT REFERENCES "reward_categories",
     "reward_description" VARCHAR (255),
     "reward_image" VARCHAR (255),
     "reward_active" BOOLEAN NOT NULL,
@@ -36,10 +38,18 @@ CREATE TABLE "redeemed" (
     "id" SERIAL PRIMARY KEY,
     "complete" BOOLEAN NOT NULL,
     "user_id" INT REFERENCES "users" NOT NULL,
-    "reward_id" INT REFERENCES "rewards" NOT NULL,
+    "reward_id" INT REFERENCES "rewards" ,
     "redeemed_value" INT NOT NULL,
     "timestamp" TIMESTAMPTZ NOT NULL DEFAULT now()
 );
+
+INSERT INTO "reward_categories" (id, reward_category, category_active)
+VALUES (0, 'aux', FALSE);
+
+INSERT INTO "rewards" (id, reward_title, reward_value, reward_active, reward_count)
+VALUES (0, 'Gift', 0, FALSE, 0);
+
+
 
 
 

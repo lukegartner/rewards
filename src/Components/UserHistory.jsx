@@ -8,17 +8,23 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Typography from "@mui/material/Typography";
 
 const UserHistory = () => {
-  const { userAwarded, userRedeemed } = useSelector((store) => store);
+  const dispatch = useDispatch();
+  const { userAwarded, userRedeemed, rewardsUser } = useSelector(
+    (store) => store
+  );
   const userHistory = [...userAwarded, ...userRedeemed];
 
   //   Figure out sortig by date
   //   console.log(userHistory.sort((a, b) => b.timestamp - a.timestamp));
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    dispatch({ type: "FETCH_USER_AWARDED", payload: rewardsUser });
+    dispatch({ type: "FETCH_USER_REDEEMED", payload: rewardsUser });
+  }, []);
   return (
     <TableContainer component={Paper} sx={{ width: "100vw" }}>
       <Typography variant="h6" align="center">
