@@ -22,7 +22,13 @@ const UserHome = () => {
   } = useSelector((store) => store);
 
   const rewardsByCategory = adminCategories
-    .filter(({ category_active }) => category_active)
+    .filter(
+      ({ category_active, id }) =>
+        category_active &&
+        adminRewards.some(
+          (reward) => reward.category_id === id && reward.reward_active
+        )
+    )
     .map((category) =>
       adminRewards.filter((reward) => reward.category_id === category.id)
     );
