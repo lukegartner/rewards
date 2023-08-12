@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useHistory } from "react-router-dom";
 
 // MUI
 import Typography from "@mui/material/Typography";
@@ -12,6 +12,7 @@ import IconButton from "@mui/material/IconButton";
 
 const SingleReward = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const { id } = useParams();
   const { selectedReward, rewardsUser } = useSelector((store) => store);
 
@@ -47,7 +48,7 @@ const SingleReward = () => {
 
   return (
     <Container sx={{ my: 1 }}>
-      <Link to="/">
+      <Link onClick={history.goBack}>
         <IconButton sx={{ py: 0.5, px: 0.5 }}>
           <ArrowBackIcon sx={{ color: "primary.main" }} />
         </IconButton>
