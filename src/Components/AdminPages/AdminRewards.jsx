@@ -85,7 +85,7 @@ const AdminRewards = () => {
   return (
     <DataGridCRUD
       columns={columns}
-      rows={adminRewards}
+      rows={adminRewards.filter(({ id }) => id !== 0)}
       title="Rewards"
       rowTitle="Reward"
       dispatchTypes={dispatchTypes}
