@@ -83,6 +83,15 @@ const Header = () => {
             Awarded - Admin
           </MenuItem>
         )}
+        {rewardsUser.admin && (
+          <MenuItem
+            component={Link}
+            to="/admin/categories"
+            onClick={handleClose}
+          >
+            Categories - Admin
+          </MenuItem>
+        )}
       </Menu>
     </AppBar>
   );

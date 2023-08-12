@@ -5,6 +5,7 @@ import AdminRewards from "./AdminPages/AdminRewards";
 import AdminUsers from "./AdminPages/AdminUsers";
 import AdminAwarded from "./AdminPages/AdminAwarded";
 import AdminRedeemed from "./AdminPages/AdminRedeemed";
+import AdminCategories from "./AdminPages/AdminCategories";
 
 const AdminHome = () => {
   const { path } = useRouteMatch();
@@ -49,6 +50,9 @@ const AdminHome = () => {
       </Route>
       <Route path={`${path}/redeemed`} exact>
         <AdminRedeemed />
+      </Route>
+      <Route path={`${path}/categories`} exact>
+        <AdminCategories />
       </Route>
     </div>
   );
