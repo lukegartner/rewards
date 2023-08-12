@@ -62,6 +62,12 @@ const Header = () => {
         <MenuItem component={Link} to="/history" onClick={handleClose}>
           History
         </MenuItem>
+        <MenuItem component={Link} to="/friends" onClick={handleClose}>
+          Friends
+        </MenuItem>
+        <MenuItem component={Link} to="/rewards" onClick={handleClose}>
+          Rewards
+        </MenuItem>
         {rewardsUser.admin && (
           <MenuItem component={Link} to="/admin/users" onClick={handleClose}>
             Users - Admin
