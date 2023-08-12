@@ -27,7 +27,7 @@ const Footer = () => {
 
   return (
     <BottomNavigation
-      sx={{ width: "100vw", position: "absolute", bottom: 0 }}
+      sx={{ width: "100vw", position: "fixed", bottom: 0 }}
       value={value}
       onChange={handleChange}
     >
