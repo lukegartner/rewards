@@ -33,7 +33,7 @@ const AdminHome = () => {
 
   // Build reward or user table
   return (
-    <div>
+    <main>
       <Route path={path} exact>
         <h1>Admin Home</h1>
         <h1>Hi Home</h1>
@@ -54,7 +54,7 @@ const AdminHome = () => {
       <Route path={`${path}/categories`} exact>
         <AdminCategories />
       </Route>
-    </div>
+    </main>
   );
 };
 
