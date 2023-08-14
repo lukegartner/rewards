@@ -85,33 +85,36 @@ const UserFriends = () => {
 
   return (
     <Container sx={{ mt: 1 }}>
-      <Grid container spacing={1}>
-        {adminUsers
-          .sort((a, b) => b.balance - a.balance)
-          .map((user) => (
-            <Grid item xs={6}>
-              <Card>
-                <Typography variant="h6" align="center" sx={{ py: 1 }}>
-                  {user.username}
-                </Typography>
-                <Avatar
-                  src={user.avatar}
-                  alt={user.username}
-                  sx={{ mx: "auto" }}
-                ></Avatar>
-                <Typography align="center">
-                  {user.balance} points{" "}
-                  <IconButton
-                    onClick={() => handleOpen(user)}
-                    disabled={user.id === rewardsUser.id ? true : false}
-                  >
-                    <RedeemIcon fontSize="small" color="primary" />
-                  </IconButton>
-                </Typography>
-              </Card>
-            </Grid>
-          ))}
-      </Grid>
+      {adminUsers.length > 0 && (
+        <Grid container spacing={1}>
+          {adminUsers
+            .sort((a, b) => b.balance - a.balance)
+            .map((user) => (
+              <Grid item xs={6}>
+                <Card>
+                  <Typography variant="h6" align="center" sx={{ py: 1 }}>
+                    {user.username}
+                  </Typography>
+                  <Avatar
+                    src={user.avatar}
+                    alt={user.username}
+                    sx={{ mx: "auto" }}
+                  ></Avatar>
+                  <Typography align="center">
+                    {user.balance} points{" "}
+                    <IconButton
+                      onClick={() => handleOpen(user)}
+                      disabled={user.id === rewardsUser.id ? true : false}
+                    >
+                      <RedeemIcon fontSize="small" color="primary" />
+                    </IconButton>
+                  </Typography>
+                </Card>
+              </Grid>
+            ))}
+        </Grid>
+      )}
+
       <Modal
         open={open}
         onClose={handleClose}
