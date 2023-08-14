@@ -13,7 +13,6 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Modal from "@mui/material/Modal";
 import Slider from "@mui/material/Slider";
-import Input from "@mui/material/Input";
 import { TextField } from "@mui/material";
 
 const UserFriends = () => {

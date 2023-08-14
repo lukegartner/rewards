@@ -1,7 +1,5 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import RewardsCarousel from "./RewardsCarousel";
-import SingleReward from "./SingleReward";
 import { Link } from "react-router-dom";
 
 // MUI

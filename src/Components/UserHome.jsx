@@ -1,6 +1,5 @@
 import { Route, useRouteMatch } from "react-router-dom";
 import { useEffect } from "react";
-import ProfileSummary from "./ProfileSummary";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useDispatch, useSelector } from "react-redux";
 import UserProfileSummary from "./UserProfileSummary";

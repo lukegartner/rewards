@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import DataGrid from "./DataGrid";
 import DataGridCRUD from "./DataGridCRUD";
 
 const AdminUsers = () => {
