@@ -26,7 +26,7 @@ const Header = () => {
     setAnchorEl(null);
   };
   return (
-    <AppBar position="fixed">
+    <AppBar position="sticky">
       <Toolbar>
         <IconButton
           size="large"

@@ -142,11 +142,11 @@ footer .login-section button:hover {
 
 /* Main */
 main {
-  position: absolute;
+  /* position: absolute;
   top: 6vh;
   width: 100vw;
   height: 88vh;
-  overflow: scroll;
+  overflow: scroll; */
 }
 
 /* Rewards Slider*/
