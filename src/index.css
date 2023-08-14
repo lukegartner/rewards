@@ -147,6 +147,7 @@ main {
   width: 100vw;
   height: 88vh;
   overflow: scroll; */
+  min-height: 88vh;
 }
 
 /* Rewards Slider*/

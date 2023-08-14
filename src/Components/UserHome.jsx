@@ -11,6 +11,7 @@ import UserFriends from "./UserFriends";
 import UserRewards from "./UserRewards";
 
 const UserHome = () => {
+  const { path } = useRouteMatch();
   const dispatch = useDispatch();
   const {
     me,
@@ -50,7 +51,7 @@ const UserHome = () => {
   }, []);
   return (
     <main>
-      <Route path="/" exact>
+      <Route path={path} exact>
         <UserProfileSummary />
 
         {rewardsReady &&
@@ -65,16 +66,16 @@ const UserHome = () => {
             />
           ))}
       </Route>
-      <Route path="/reward/:id">
+      <Route path={`${path}/reward/:id`}>
         <SingleReward />
       </Route>
-      <Route path="/history">
+      <Route path={`${path}/history`}>
         <UserHistory />
       </Route>
-      <Route path="/friends">
+      <Route path={`${path}/friends`}>
         <UserFriends />
       </Route>
-      <Route path="/rewards">
+      <Route path={`${path}/rewards`}>
         <UserRewards />
       </Route>
     </main>
