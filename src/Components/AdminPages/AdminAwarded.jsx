@@ -32,7 +32,7 @@ const AdminAwarded = () => {
     {
       field: "user_id",
       headerName: "Username",
-      width: 150,
+      width: 120,
       editable: true,
       type: "singleSelect",
       valueOptions: userOptions,
@@ -59,9 +59,15 @@ const AdminAwarded = () => {
     },
     {
       field: "timestamp",
-      headerName: "Timestamp",
-      width: 150,
+      headerName: "Date",
+      width: 120,
       editable: false,
+      valueFormatter: (params) => {
+        if (params.value == null) {
+          return "";
+        }
+        return `${new Date(params.value).toLocaleDateString("en-US")} `;
+      },
     },
   ];
 
