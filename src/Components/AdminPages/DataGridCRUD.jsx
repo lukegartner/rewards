@@ -18,6 +18,13 @@ import {
   GridRowEditStopReasons,
 } from "@mui/x-data-grid";
 
+// Delete Alert
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
+
 function EditToolbar(props) {
   const { setRows, setRowModesModel } = props;
 
@@ -43,6 +50,9 @@ export default function FullFeaturedCrudGrid(props) {
   const dispatch = useDispatch();
   const [rows, setRows] = useState(props.rows);
   const [rowModesModel, setRowModesModel] = useState({});
+  // For delete confirmation
+  const [deleteOpen, setDeleteOpen] = useState(false);
+  const [deleteId, setDeleteId] = useState("");
   useEffect(() => {
     setRows(props.rows);
   }, [props]);
@@ -61,9 +71,19 @@ export default function FullFeaturedCrudGrid(props) {
     setRowModesModel({ ...rowModesModel, [id]: { mode: GridRowModes.View } });
   };
 
-  const handleDeleteClick = (id) => () => {
-    setRows(rows.filter((row) => row.id !== id));
-    dispatch({ type: props.dispatchTypes.DELETE, payload: { id } });
+  const handleDeleteClick = () => {
+    setRows(rows.filter((row) => row.id !== deleteId));
+    dispatch({ type: props.dispatchTypes.DELETE, payload: { id: deleteId } });
+    handleClose();
+  };
+  // For delete confirmation
+  const handleClickOpen = (id) => {
+    setDeleteOpen(true);
+    setDeleteId(id);
+  };
+
+  const handleClose = () => {
+    setDeleteOpen(false);
   };
 
   const handleCancelClick = (id) => () => {
@@ -76,6 +96,7 @@ export default function FullFeaturedCrudGrid(props) {
     if (editedRow.isNew) {
       setRows(rows.filter((row) => row.id !== id));
     }
+    handleClose();
   };
 
   const processRowUpdate = (newRow) => {
@@ -137,7 +158,9 @@ export default function FullFeaturedCrudGrid(props) {
           <GridActionsCellItem
             icon={<DeleteIcon />}
             label="Delete"
-            onClick={handleDeleteClick(id)}
+            onClick={() => {
+              handleClickOpen(id);
+            }}
             color="inherit"
           />,
         ];
@@ -175,6 +198,25 @@ export default function FullFeaturedCrudGrid(props) {
           toolbar: { setRows, setRowModesModel, rowTitle: props.rowTitle },
         }}
       />
+      <Dialog
+        open={deleteOpen}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">{"Confirm Delete"}</DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            Are you sure you want to delete this item?
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose}>Cancel</Button>
+          <Button onClick={handleDeleteClick} autoFocus color="error">
+            Delete
+          </Button>
+        </DialogActions>
+      </Dialog>
     </Box>
   );
 }
