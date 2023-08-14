@@ -52,7 +52,7 @@ const UserHome = () => {
                     item
                     xs={6}
                     component={Link}
-                    to={`/reward/${reward.id}`}
+                    to={`/user/reward/${reward.id}`}
                     sx={{ textDecoration: "none" }}
                   >
                     <Card>

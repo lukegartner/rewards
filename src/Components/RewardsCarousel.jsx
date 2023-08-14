@@ -41,7 +41,7 @@ function RewardsCarousel({ rewards, category }) {
         <Box sx={{ maxWidth: 300, flexGrow: 1, mx: "auto" }}>
           <Box
             component={Link}
-            to={`/reward/${rewards[activeStep].id}`}
+            to={`/user/reward/${rewards[activeStep].id}`}
             sx={{ textDecoration: "none" }}
           >
             <Paper

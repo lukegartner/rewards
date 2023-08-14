@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useParams, Link, useHistory } from "react-router-dom";
+import { useState } from "react";
 
 // MUI
 import Typography from "@mui/material/Typography";
@@ -9,12 +10,20 @@ import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import IconButton from "@mui/material/IconButton";
+// MUI Success Dialogue
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
 
 const SingleReward = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const { id } = useParams();
   const { selectedReward, rewardsUser } = useSelector((store) => store);
+
+  const [openDialogue, setOpenDialogue] = useState(false);
 
   useEffect(() => {
     dispatch({ type: "FETCH_SELECTED_REWARD", payload: id });
@@ -44,6 +53,15 @@ const SingleReward = () => {
         balance: rewardsUser.balance - selectedReward.reward_value,
       },
     });
+    handleClickOpen();
+  };
+
+  const handleClickOpen = () => {
+    setOpenDialogue(true);
+  };
+
+  const handleClose = () => {
+    setOpenDialogue(false);
   };
 
   return (
@@ -76,6 +94,25 @@ const SingleReward = () => {
       >
         Redeem {selectedReward.reward_value}
       </Button>
+      <Dialog
+        open={openDialogue}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">{"Congratulations!"}</DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            You have successfully redeemed {selectedReward.reward_title}! A
+            staff memeber will reach out to you to deliver your reward shortly.
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} autoFocus>
+            Close
+          </Button>
+        </DialogActions>
+      </Dialog>
     </Container>
   );
 };
