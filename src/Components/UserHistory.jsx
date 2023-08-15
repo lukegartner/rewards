@@ -26,7 +26,10 @@ const UserHistory = () => {
     dispatch({ type: "FETCH_USER_REDEEMED", payload: rewardsUser });
   }, []);
   return (
-    <TableContainer component={Paper} sx={{ width: "100vw" }}>
+    <TableContainer
+      component={Paper}
+      sx={{ width: "100vw", backgroundImage: "none" }}
+    >
       <Typography variant="h6" align="center">
         History
       </Typography>

@@ -24,25 +24,37 @@ const Footer = () => {
 
   return (
     <BottomNavigation
-      sx={{ width: "100vw", position: "sticky", bottom: 0 }}
+      sx={{
+        width: "100vw",
+        position: "sticky",
+        bottom: 0,
+      }}
       value={value}
       onChange={handleChange}
     >
-      <BottomNavigationAction label="Home" value="" icon={<HomeIcon />} />
+      <BottomNavigationAction
+        label="Home"
+        value=""
+        icon={<HomeIcon />}
+        sx={{ color: "primary.contrastText" }}
+      />
       <BottomNavigationAction
         label="History"
         value="history"
         icon={<HistoryIcon />}
+        sx={{ color: "primary.contrastText" }}
       />
       <BottomNavigationAction
         label="Friends"
         value="friends"
         icon={<GroupIcon />}
+        sx={{ color: "primary.contrastText" }}
       />
       <BottomNavigationAction
         label="Rewards"
         value="rewards"
         icon={<WorkspacePremiumIcon />}
+        sx={{ color: "primary.contrastText" }}
       />
       <BottomNavigationAction
         label={isUser ? "Logout" : "Login"}
@@ -62,6 +74,7 @@ const Footer = () => {
             />
           )
         }
+        sx={{ color: "primary.contrastText" }}
       />
     </BottomNavigation>
   );

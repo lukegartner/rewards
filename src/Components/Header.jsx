@@ -25,7 +25,14 @@ const Header = () => {
     setAnchorEl(null);
   };
   return (
-    <AppBar position="sticky">
+    <AppBar
+      position="sticky"
+      sx={{
+        bgcolor: "primary.main",
+        backgroundImage: "none",
+        color: "primary.contrastText",
+      }}
+    >
       <Toolbar>
         <IconButton
           size="large"

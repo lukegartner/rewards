@@ -197,6 +197,7 @@ export default function FullFeaturedCrudGrid(props) {
         slotProps={{
           toolbar: { setRows, setRowModesModel, rowTitle: props.rowTitle },
         }}
+        sx={{ bgcolor: "background.paper", backgroundImage: "none" }}
       />
       <Dialog
         open={deleteOpen}

@@ -90,7 +90,7 @@ const UserFriends = () => {
             .sort((a, b) => b.balance - a.balance)
             .map((user) => (
               <Grid item xs={6}>
-                <Card>
+                <Card sx={{ backgroundImage: "none" }}>
                   <Typography variant="h6" align="center" sx={{ py: 1 }}>
                     {user.username}
                   </Typography>

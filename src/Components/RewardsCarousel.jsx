@@ -37,7 +37,16 @@ function RewardsCarousel({ rewards, category }) {
       <Typography variant="h5" sx={{ ml: "2.5%" }}>
         {category.reward_category}
       </Typography>
-      <Card sx={{ width: "95%", mx: "auto", mb: 1, py: 0.5, px: 1 }}>
+      <Card
+        sx={{
+          width: "95%",
+          mx: "auto",
+          mb: 1,
+          py: 0.5,
+          px: 1,
+          backgroundImage: "none",
+        }}
+      >
         <Box sx={{ maxWidth: 300, flexGrow: 1, mx: "auto" }}>
           <Box
             component={Link}
@@ -53,7 +62,6 @@ function RewardsCarousel({ rewards, category }) {
                 height: 50,
                 pl: 2,
                 pr: 2,
-                bgcolor: "background.default",
                 justifyContent: "space-between",
               }}
             >
@@ -92,6 +100,7 @@ function RewardsCarousel({ rewards, category }) {
             </AutoPlaySwipeableViews>
           </Box>
           <MobileStepper
+            sx={{ bgcolor: "background.paper" }}
             steps={maxSteps}
             position="static"
             activeStep={activeStep}

@@ -8,6 +8,7 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import Avatar from "@mui/material/Avatar";
 import Card from "@mui/material/Card";
+import { Paper } from "@mui/material";
 
 const UserHome = () => {
   const dispatch = useDispatch();
@@ -55,7 +56,7 @@ const UserHome = () => {
                     to={`/user/reward/${reward.id}`}
                     sx={{ textDecoration: "none" }}
                   >
-                    <Card>
+                    <Card sx={{ backgroundImage: "none" }}>
                       <Typography variant="h6" align="center" sx={{ py: 1 }}>
                         {reward.reward_title}
                       </Typography>
