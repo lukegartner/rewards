@@ -84,6 +84,9 @@ const UserFriends = () => {
 
   return (
     <Container sx={{ mt: 1 }}>
+      <Typography variant="h4" align="center">
+        Friends
+      </Typography>
       {adminUsers.length > 0 && (
         <Grid container spacing={1}>
           {adminUsers
@@ -99,7 +102,7 @@ const UserFriends = () => {
                     alt={user.username}
                     sx={{ mx: "auto" }}
                   ></Avatar>
-                  <Typography align="center">
+                  <Typography align="center" color="primary.contrastText">
                     {user.balance} points{" "}
                     <IconButton
                       onClick={() => handleOpen(user)}
