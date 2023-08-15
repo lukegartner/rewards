@@ -84,7 +84,7 @@ const UserFriends = () => {
 
   return (
     <Container sx={{ mt: 1 }}>
-      <Typography variant="h4" align="center">
+      <Typography variant="h4" align="center" sx={{ mb: 1 }}>
         Friends
       </Typography>
       {adminUsers.length > 0 && (
