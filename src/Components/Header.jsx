@@ -62,16 +62,16 @@ const Header = () => {
           "aria-labelledby": "basic-button",
         }}
       >
-        <MenuItem component={Link} to="/user" onClick={handleClose}>
+        <MenuItem component={Link} to="/" onClick={handleClose}>
           Home
         </MenuItem>
-        <MenuItem component={Link} to="/user/history" onClick={handleClose}>
+        <MenuItem component={Link} to="/history" onClick={handleClose}>
           History
         </MenuItem>
-        <MenuItem component={Link} to="/user/friends" onClick={handleClose}>
+        <MenuItem component={Link} to="/friends" onClick={handleClose}>
           Friends
         </MenuItem>
-        <MenuItem component={Link} to="/user/rewards" onClick={handleClose}>
+        <MenuItem component={Link} to="/rewards" onClick={handleClose}>
           Rewards
         </MenuItem>
         {rewardsUser.admin && (

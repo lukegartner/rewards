@@ -44,13 +44,15 @@ function App() {
       <div className="App">
         <Router>
           <Header />
-          <Route path="/user">
-            {(!user || !isAuthenticated) && <LoginPage />}
-            {user && isAuthenticated && <UserHome />}
-          </Route>
-          <Route path="/admin">
-            <AdminHome />
-          </Route>
+          <main>
+            <Route path="/">
+              {(!user || !isAuthenticated) && <LoginPage />}
+              {user && isAuthenticated && <UserHome />}
+            </Route>
+            <Route path="/admin">
+              <AdminHome />
+            </Route>
+          </main>
           <Footer />
         </Router>
       </div>

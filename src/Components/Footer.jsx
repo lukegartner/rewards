@@ -19,7 +19,7 @@ const Footer = () => {
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
-    history.push(`/user/${newValue}`);
+    history.push(`/${newValue}`);
   };
 
   return (

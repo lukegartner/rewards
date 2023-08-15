@@ -49,7 +49,7 @@ const UserHome = () => {
     }
   }, []);
   return (
-    <main>
+    <>
       <Route path={path} exact>
         <UserProfileSummary />
 
@@ -65,19 +65,19 @@ const UserHome = () => {
             />
           ))}
       </Route>
-      <Route path={`${path}/reward/:id`}>
+      <Route path={`${path}reward/:id`}>
         <SingleReward />
       </Route>
-      <Route path={`${path}/history`}>
+      <Route path={`${path}history`}>
         <UserHistory />
       </Route>
-      <Route path={`${path}/friends`}>
+      <Route path={`${path}friends`}>
         <UserFriends />
       </Route>
-      <Route path={`${path}/rewards`}>
+      <Route path={`${path}rewards`}>
         <UserRewards />
       </Route>
-    </main>
+    </>
   );
 };
 

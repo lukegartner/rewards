@@ -29,7 +29,8 @@ const UserProfileSummary = () => {
       >
         <Typography variant="h5">{isUser ? user.nickname : "user"}</Typography>
         <Avatar
-          src={me.attributes ? me.attributes.avatar : pcoImg}
+          // src={me.attributes ? me.attributes.avatar : pcoImg}
+          src={rewardsUser.avatar ? rewardsUser.avatar : pcoImg}
           alt="avatar"
         />
         <Typography>{rewardsUser.balance} points</Typography>
