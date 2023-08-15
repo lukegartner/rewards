@@ -108,7 +108,7 @@ const UserFriends = () => {
                       onClick={() => handleOpen(user)}
                       disabled={user.id === rewardsUser.id ? true : false}
                     >
-                      <RedeemIcon fontSize="small" color="primary" />
+                      <RedeemIcon fontSize="small" color="secondary" />
                     </IconButton>
                   </Typography>
                 </Card>
