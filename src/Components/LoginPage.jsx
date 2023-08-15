@@ -9,7 +9,7 @@ const LoginPage = () => {
   const { loginWithRedirect } = useAuth0();
   return (
     <Container component="main" sx={{ width: "90vw", mt: "33vh" }}>
-      <Typography align="center" variant="h2">
+      <Typography align="center" variant="h2" color="secondary">
         Welcome
       </Typography>
       <Button

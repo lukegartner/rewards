@@ -100,7 +100,7 @@ const UserFriends = () => {
                   <Avatar
                     src={user.avatar}
                     alt={user.username}
-                    sx={{ mx: "auto" }}
+                    sx={{ mx: "auto", height: 56, width: 56 }}
                   ></Avatar>
                   <Typography align="center" color="primary.contrastText">
                     {user.balance} points{" "}

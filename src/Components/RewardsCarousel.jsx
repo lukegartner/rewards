@@ -34,7 +34,7 @@ function RewardsCarousel({ rewards, category }) {
 
   return (
     <>
-      <Typography variant="h5" color="secondary.light" sx={{ ml: "2.5%" }}>
+      <Typography variant="h5" color="secondary" sx={{ ml: "2.5%" }}>
         {category.reward_category}
       </Typography>
       <Card

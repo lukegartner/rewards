@@ -41,7 +41,7 @@ const UserHome = () => {
       {rewardsReady &&
         rewardsByCategory.map((rewards, index) => (
           <Container sx={{ mt: 1 }}>
-            <Typography variant="h5" color="secondary.light">
+            <Typography variant="h5" color="secondary">
               {
                 adminCategories.filter(
                   ({ category_active }) => category_active

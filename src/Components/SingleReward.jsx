@@ -108,7 +108,7 @@ const SingleReward = () => {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} autoFocus>
+          <Button onClick={handleClose} autoFocus color="secondary">
             Close
           </Button>
         </DialogActions>
