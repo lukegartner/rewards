@@ -32,8 +32,11 @@ const UserProfileSummary = () => {
           // src={me.attributes ? me.attributes.avatar : pcoImg}
           src={rewardsUser.avatar ? rewardsUser.avatar : pcoImg}
           alt="avatar"
+          sx={{ width: 56, height: 56 }}
         />
-        <Typography>{rewardsUser.balance} points</Typography>
+        <Typography color="primary.contrastText">
+          {rewardsUser.balance} points
+        </Typography>
       </Paper>
     </Box>
   );

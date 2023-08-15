@@ -34,7 +34,7 @@ function RewardsCarousel({ rewards, category }) {
 
   return (
     <>
-      <Typography variant="h5" sx={{ ml: "2.5%" }}>
+      <Typography variant="h5" color="secondary.light" sx={{ ml: "2.5%" }}>
         {category.reward_category}
       </Typography>
       <Card
@@ -68,7 +68,9 @@ function RewardsCarousel({ rewards, category }) {
               <Typography variant="h6">
                 {rewards[activeStep].reward_title}
               </Typography>
-              <Typography>{rewards[activeStep].reward_value} points</Typography>
+              <Typography color="primary.contrastText">
+                {rewards[activeStep].reward_value} points
+              </Typography>
             </Paper>
             <AutoPlaySwipeableViews
               axis={theme.direction === "rtl" ? "x-reverse" : "x"}
@@ -107,6 +109,7 @@ function RewardsCarousel({ rewards, category }) {
             nextButton={
               <Button
                 size="small"
+                // color="secondary"
                 onClick={handleNext}
                 disabled={activeStep === maxSteps - 1}
               >
@@ -121,6 +124,7 @@ function RewardsCarousel({ rewards, category }) {
             backButton={
               <Button
                 size="small"
+                // color="secondary"
                 onClick={handleBack}
                 disabled={activeStep === 0}
               >
