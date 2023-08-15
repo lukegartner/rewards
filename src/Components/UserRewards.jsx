@@ -35,10 +35,13 @@ const UserHome = () => {
   }, []);
   return (
     <>
+      <Typography variant="h4" align="center" sx={{ mt: 1 }}>
+        Rewards
+      </Typography>
       {rewardsReady &&
         rewardsByCategory.map((rewards, index) => (
           <Container sx={{ mt: 1 }}>
-            <Typography variant="h5" align="center">
+            <Typography variant="h5" color="secondary.light">
               {
                 adminCategories.filter(
                   ({ category_active }) => category_active
@@ -56,16 +59,20 @@ const UserHome = () => {
                     to={`/reward/${reward.id}`}
                     sx={{ textDecoration: "none" }}
                   >
-                    <Card sx={{ backgroundImage: "none" }}>
-                      <Typography variant="h6" align="center" sx={{ py: 1 }}>
+                    <Card
+                      sx={{
+                        backgroundImage: "none",
+                      }}
+                    >
+                      <Typography variant="h6" align="center" sx={{ pt: 1 }}>
                         {reward.reward_title}
                       </Typography>
                       <Avatar
                         src={reward.reward_image}
                         alt={reward.reward_title}
-                        sx={{ mx: "auto" }}
+                        sx={{ mx: "auto", width: 56, height: 56 }}
                       ></Avatar>
-                      <Typography align="center">
+                      <Typography align="center" color="primary.contrastText">
                         {reward.reward_value} points
                       </Typography>
                     </Card>
