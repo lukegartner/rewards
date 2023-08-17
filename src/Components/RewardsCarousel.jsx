@@ -15,7 +15,7 @@ import { autoPlay } from "react-swipeable-views-utils-react-18-fix";
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
-function RewardsCarousel({ rewards, category }) {
+function RewardsCarousel({ rewards }) {
   const theme = useTheme();
   const [activeStep, setActiveStep] = useState(0);
   const maxSteps = rewards.length;
@@ -35,7 +35,7 @@ function RewardsCarousel({ rewards, category }) {
   return (
     <>
       <Typography variant="h5" color="secondary" sx={{ ml: "2.5%" }}>
-        {category.reward_category}
+        Rewards
       </Typography>
       <Card
         sx={{
@@ -102,6 +102,7 @@ function RewardsCarousel({ rewards, category }) {
             </AutoPlaySwipeableViews>
           </Box>
           <MobileStepper
+            variant="none"
             sx={{ bgcolor: "background.paper" }}
             steps={maxSteps}
             position="static"
@@ -112,6 +113,7 @@ function RewardsCarousel({ rewards, category }) {
                 // color="secondary"
                 onClick={handleNext}
                 disabled={activeStep === maxSteps - 1}
+                color="secondary"
               >
                 Next
                 {theme.direction === "rtl" ? (
@@ -127,6 +129,7 @@ function RewardsCarousel({ rewards, category }) {
                 // color="secondary"
                 onClick={handleBack}
                 disabled={activeStep === 0}
+                color="secondary"
               >
                 {theme.direction === "rtl" ? (
                   <KeyboardArrowRight />

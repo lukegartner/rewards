@@ -53,17 +53,11 @@ const UserHome = () => {
       <Route path={path} exact>
         <UserProfileSummary />
 
-        {rewardsReady &&
-          rewardsByCategory.map((rewards, index) => (
-            <RewardsCarousel
-              rewards={rewards.filter(({ reward_active }) => reward_active)}
-              category={
-                adminCategories.filter(
-                  ({ category_active }) => category_active
-                )[index]
-              }
-            />
-          ))}
+        {rewardsReady && (
+          <RewardsCarousel
+            rewards={adminRewards.filter(({ reward_active }) => reward_active)}
+          />
+        )}
       </Route>
       <Route path={`${path}reward/:id`}>
         <SingleReward />
