@@ -9,6 +9,7 @@ import UserHistory from "./UserHistory";
 import UserFriends from "./UserFriends";
 import UserRewards from "./UserRewards";
 import FriendsSummary from "./FriendsSummary";
+import HistorySummary from "./HistorySummary";
 
 const UserHome = () => {
   const { path } = useRouteMatch();
@@ -61,6 +62,7 @@ const UserHome = () => {
           />
         )}
         <FriendsSummary />
+        <HistorySummary />
       </Route>
       <Route path={`${path}reward/:id`}>
         <SingleReward />

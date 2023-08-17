@@ -33,12 +33,12 @@ const FriendsSummary = () => {
   }, []);
 
   return (
-    <Container sx={{ mt: 1 }}>
-      <Typography variant="h5" color="secondary">
+    <>
+      <Typography variant="h5" color="secondary" sx={{ ml: "2.5%" }}>
         Leaderboard
       </Typography>
       {adminUsers.length > 0 && (
-        <Grid container spacing={1}>
+        <Grid container spacing={1} sx={{ width: "95vw", ml: "1.75%" }}>
           {adminUsers
             .sort((a, b) => b.balance - a.balance)
             .slice(0, 3)
@@ -64,7 +64,7 @@ const FriendsSummary = () => {
             ))}
         </Grid>
       )}
-    </Container>
+    </>
   );
 };
 
