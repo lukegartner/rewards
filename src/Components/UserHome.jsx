@@ -8,6 +8,7 @@ import SingleReward from "./SingleReward";
 import UserHistory from "./UserHistory";
 import UserFriends from "./UserFriends";
 import UserRewards from "./UserRewards";
+import FriendsSummary from "./FriendsSummary";
 
 const UserHome = () => {
   const { path } = useRouteMatch();
@@ -46,6 +47,7 @@ const UserHome = () => {
       });
       dispatch({ type: "FETCH_REWARDS_ADMIN" });
       dispatch({ type: "FETCH_CATEGORIES_ADMIN" });
+      dispatch({ type: "FETCH_USERS_ADMIN" });
     }
   }, []);
   return (
@@ -58,6 +60,7 @@ const UserHome = () => {
             rewards={adminRewards.filter(({ reward_active }) => reward_active)}
           />
         )}
+        <FriendsSummary />
       </Route>
       <Route path={`${path}reward/:id`}>
         <SingleReward />
