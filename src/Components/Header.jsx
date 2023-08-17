@@ -40,7 +40,7 @@ const Header = () => {
           color="inherit"
           aria-label="menu"
           onClick={handleClick}
-          sx={{ mr: 2 }}
+          sx={{ mr: 9 }}
         >
           <MenuIcon />
         </IconButton>
